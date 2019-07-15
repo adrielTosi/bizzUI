@@ -29,10 +29,10 @@ module.exports = {
     },
     {
     resolve: "gatsby-source-graphql",
-        options: {
-          typeName: "BIZZ",
-          fieldName: "Bizz",
-          url: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
+    options: {
+      typeName: "BIZZ",
+      fieldName: "Bizz",
+      url: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
     },
 },
     // this (optional) plugin enables Progressive Web App + Offline functionality
