@@ -1,5 +1,5 @@
-import React from "react";
-import { createUseStyles } from "react-jss";
+import React from "react"
+import { createUseStyles } from "react-jss"
 
 // TODO: add props to modify style and default props
 const useStyle = createUseStyles({
@@ -10,33 +10,34 @@ const useStyle = createUseStyles({
     borderRadius: 8,
     border: "1px solid #8DE971",
     backgroundColor: "#f7fff5",
-    padding: 16
-  }
-});
+    padding: 16,
+    marginBottom: 24
+  },
+})
 
 const BCard = ({ children }) => {
-  const style = useStyle();
+  const style = useStyle()
 
   const renderChildren = () => {
-    const title = [];
-    const rest = [];
+    const title = []
+    const rest = []
     // Separates the children into Title and Rest, so title is always displayed above
-    const arrayChildren = React.Children.toArray(children);
+    const arrayChildren = React.Children.toArray(children)
     arrayChildren.forEach(child => {
       if (child.type && child.type.name === "BCardTitle") {
-        title.push(child);
+        title.push(child)
       } else {
-        rest.push(child);
+        rest.push(child)
       }
-    });
+    })
     return (
       <div className={style.cardContainer}>
         <div>{title.length !== 0 && title[0]}</div>
-        <div>{rest && rest.map(item => <> {item} </>)}</div>
+        <div>{rest}</div>
       </div>
-    );
-  };
-  return renderChildren();
-};
+    )
+  }
+  return renderChildren()
+}
 
-export default BCard;
+export default BCard

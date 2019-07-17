@@ -26,6 +26,7 @@ const BQuizz = () => {
             title
             subtitle
             votes
+            blockWidth
             img {
               url
             }
@@ -36,6 +37,7 @@ const BQuizz = () => {
   `)
   const questionsMapper = () => {
     const { questionItems } = Bizz
+    console.log(questionItems)
     return questionItems.map(question => (
       <BCard key={question.id}>
         <BCardTitle title={question.title} />
@@ -46,6 +48,7 @@ const BQuizz = () => {
               url={option.img.url}
               title={option.title}
               subtitle={option.subtitle}
+              block={option.blockWidth}
             />
           ))}
         </BOptions>
