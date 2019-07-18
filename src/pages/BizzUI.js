@@ -1,9 +1,16 @@
-import React from 'react'
-import BQuizz from 'components/BizzUI/BQuizz.js'
+import React from "react"
+
+import BQuizzContainer from "components/BizzUI/BQuizzContainer.js"
+import Layout from "layouts/BQuestionLayout"
+
+import "bootstrap/dist/css/bootstrap.css"
+import "styles/index.scss"
 
 const BizzUI = () => {
   return (
-    <BQuizz />
+    <Layout>
+      <BQuizzContainer />
+    </Layout>
   )
 }
 
