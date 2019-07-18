@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { createUseStyles } from "react-jss"
+import PropTypes from "prop-types"
 
 import bizzContext from "contexts/bizzContext"
 
@@ -81,6 +82,16 @@ const BOptionItem = ({
       )}
     </div>
   )
+}
+
+BOptionItem.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  questionId: PropTypes.string.isRequired,
+  optionId: PropTypes.string.isRequired,
+  block: PropTypes.bool.isRequired,
+  checked: PropTypes.bool.isRequired,
 }
 
 BOptionItem.defaultProps = {
