@@ -1,13 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import { createUseStyles } from "react-jss"
 
+import bizzContext from "contexts/bizzContext"
+
 const useStyles = createUseStyles({
-  optionItemContainer: block => {
+  optionItemContainer: ({ block, checked }) => {
     const containerWidth = block ? "100%" : "50%"
     const flexWrap = "wrap"
     const alignItems = block ? "center" : "initial"
+    const selectedBackground = checked ? "#e8f7e5" : ""
     return {
-      minHeight: 130,
+      minHeight: 80,
       width: containerWidth,
       overflow: "hidden",
       display: "flex",
@@ -15,9 +18,12 @@ const useStyles = createUseStyles({
       justifyContent: "center",
       alignItems: alignItems,
       padding: "8px",
+      cursor: "pointer",
+      backgroundColor: selectedBackground,
+      borderRadius: 8,
     }
   },
-  image: block => {
+  image: ({ block }) => {
     const display = block ? "flex" : "block"
     return {
       width: "100%",
@@ -29,6 +35,7 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     alingItems: "center",
+    textAlign: "center",
   },
   title: {
     color: "#4f4f4f",
@@ -42,18 +49,36 @@ const useStyles = createUseStyles({
   },
 })
 
-// TODO: checked functionality
-const BOptionItem = ({ url, block, title, subtitle }) => {
-  const style = useStyles(block)
+/**
+ * BLOCK and CHECKED props are in PROPS
+ */
+const BOptionItem = ({
+  url,
+  title,
+  subtitle,
+  questionId,
+  optionId,
+  ...props
+}) => {
+  const { checkSelectedOption, bizzState } = useContext(bizzContext)
+
+  const style = useStyles(props)
+
+  const handleClick = () => {
+    checkSelectedOption(bizzState.stateQuestionItems, questionId, optionId)
+  }
+
   return (
-    <div className={style.optionItemContainer}>
+    <div className={style.optionItemContainer} onClick={handleClick}>
       <div className={style.image}>
         <img src={url} alt="img" />
       </div>
-      <div className={style.titles}>
-        {title && <span className={style.title}>{title}</span>}
-        {subtitle && <span className={style.subtitle}>{subtitle}</span>}
-      </div>
+      {(title || subtitle) && (
+        <div className={style.titles}>
+          {title && <span className={style.title}>{title}</span>}
+          {subtitle && <span className={style.subtitle}>{subtitle}</span>}
+        </div>
+      )}
     </div>
   )
 }

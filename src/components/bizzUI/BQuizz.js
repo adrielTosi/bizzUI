@@ -30,23 +30,29 @@ const BQuizz = () => {
 
   const context = useContext(bizzContext)
 
-  useEffect(() => context.setQuestions(Bizz.questionItems), [])
+  useEffect(() => {
+    context.setQuestions(Bizz.questionItems)
+    context.setCheckedKeyToOptions(Bizz.questionItems)
+  }, [])
 
   const questionsMapper = () => {
-    const { questionItems } = Bizz
+    const { stateQuestionItems } = context.bizzState
     console.log(context)
-    return questionItems.map(question => (
+
+    return stateQuestionItems.map(question => (
       <BCard key={question.id} id={question.id}>
         <BCardTitle title={question.title} />
         <BOptions>
           {question.options.map(option => (
             <BOptionItem
               key={option.id}
-              id={option.id}
+              questionId={question.id}
+              optionId={option.id}
               url={option.img.url}
               title={option.title}
               subtitle={option.subtitle}
               block={option.blockWidth}
+              checked={option.checked}
             />
           ))}
         </BOptions>
