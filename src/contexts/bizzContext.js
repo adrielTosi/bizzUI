@@ -1,5 +1,9 @@
-import React, { createContext } from "react"
+import { createContext } from "react"
 
-const { Consumer, provider } = createContext({
-  questions: [],
+const bizzContext = createContext({
+  bizzState: {},
+  setQuestions: questions => {},
+  setCheckedKeyToOptions: questions => {},
 })
+
+export default bizzContext

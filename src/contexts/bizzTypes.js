@@ -1,1 +1,2 @@
 export const SET_QUESTIONS = "SET_QUESTIONS"
+export const SET_CHECKED_KEYS = "SET_CHECKED_KEYS"
