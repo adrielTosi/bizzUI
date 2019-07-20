@@ -2,12 +2,14 @@ import {
   setQuestions,
   setCheckedKeyToOptions,
   checkSelectedOption,
+  setHasVoted,
 } from "./bizzActions"
 
 import {
   SET_QUESTIONS,
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
+  SET_HAS_VOTED,
 } from "./bizzTypes"
 
 const bizzReducer = (state, action) => {
@@ -24,6 +26,8 @@ const bizzReducer = (state, action) => {
         payload.optionId,
         state
       )
+    case SET_HAS_VOTED:
+      return setHasVoted(payload, state)
     default:
       return state
   }

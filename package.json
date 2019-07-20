@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "apollo-boost": "^0.4.3",
+    "apollo-client": "^2.6.3",
     "bootstrap": "^4.3.1",
     "gatsby": "^2.13.21",
     "gatsby-image": "^2.2.6",
@@ -16,12 +18,16 @@
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-graphql": "^2.1.2",
     "gatsby-transformer-sharp": "^2.2.3",
+    "graphql-tag": "^2.10.1",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-jss": "10.0.0-alpha.22"
+    "react-jss": "10.0.0-alpha.22",
+    "react-reveal": "^1.2.2"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

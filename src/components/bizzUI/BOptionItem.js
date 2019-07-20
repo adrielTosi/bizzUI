@@ -90,7 +90,7 @@ BOptionItem.propTypes = {
   subtitle: PropTypes.string,
   questionId: PropTypes.string.isRequired,
   optionId: PropTypes.string.isRequired,
-  block: PropTypes.bool.isRequired,
+  block: PropTypes.bool,
   checked: PropTypes.bool.isRequired,
 }
 

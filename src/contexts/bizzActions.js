@@ -51,3 +51,10 @@ export const checkSelectedOption = (questions, questionId, optionId, state) => {
     stateQuestionItems: newQuestionItems,
   }
 }
+
+export const setHasVoted = (bool, state) => {
+  return {
+    ...state,
+    hasVoted: bool,
+  }
+}

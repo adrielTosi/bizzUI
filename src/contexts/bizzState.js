@@ -7,10 +7,12 @@ import {
   SET_QUESTIONS,
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
+  SET_HAS_VOTED
 } from "./bizzTypes"
 
 const initialState = {
   stateQuestionItems: [],
+  hasVoted: false
 }
 
 const BizzState = ({ children }) => {
@@ -32,6 +34,9 @@ const BizzState = ({ children }) => {
       },
     })
   }
+  const setHasVoted = (bool) => {
+    dispatch({ type: SET_HAS_VOTED, payload: bool })
+  }
 
   return (
     <BizzContext.Provider
@@ -40,6 +45,7 @@ const BizzState = ({ children }) => {
         setQuestions,
         setCheckedKeyToOptions,
         checkSelectedOption,
+        setHasVoted
       }}
     >
       {children}
