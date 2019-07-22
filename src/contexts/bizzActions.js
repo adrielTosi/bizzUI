@@ -24,6 +24,8 @@ export const setCheckedKeyToOptions = (questions, state) => {
 }
 
 export const uncheckAllQuestionOptions = (questions, questionId) => {
+  console.log("questions at uncheckAllQuestionOptions ")
+  console.log(questions)
   questions.forEach(question => {
     if (question.id === questionId) {
       question.options.forEach(option => (option.checked = false))

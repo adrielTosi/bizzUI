@@ -9,7 +9,7 @@ import BOptionItem from "components/bizzUI/BOptionItem"
 import bizzContext from "contexts/bizzContext"
 
 const BQuizz = () => {
-  const { Bizz } = useStaticQuery(graphql`
+  const query = useStaticQuery(graphql`
     query {
       Bizz {
         questionItems {
@@ -34,8 +34,10 @@ const BQuizz = () => {
   const context = useContext(bizzContext)
 
   useEffect(() => {
-    context.setQuestions(Bizz.questionItems)
-    context.setCheckedKeyToOptions(Bizz.questionItems)
+    if (query) {
+      context.setQuestions(query.Bizz.questionItems)
+      context.setCheckedKeyToOptions(query.Bizz.questionItems)
+    }
   }, [])
 
   const questionsMapper = () => {
@@ -65,7 +67,7 @@ const BQuizz = () => {
     ))
   }
   return (
-    <div>
+    <div data-testid="bquizz-component">
       <div className="titleContainer">
         <h3>Quizz</h3>
         {context.bizzState.hasVoted && (

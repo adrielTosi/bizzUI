@@ -1,18 +1,23 @@
-import React from "react";
-import { createUseStyles } from "react-jss";
+import React, { useContext } from "react"
+import { createUseStyles } from "react-jss"
 
-const useStyles = createUseStyles({
-  optionContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    height: "100%"
-  }
-});
+import BizzContext from "contexts/bizzContext"
 
 const BOptions = ({ children }) => {
-  const style = useStyles();
-  return <div className={style.optionContainer}>{children}</div>;
-};
+  const { bizzState } = useContext(BizzContext)
 
-export default BOptions;
+  const useStyles =
+    !bizzState.inTestingEnviroment &&
+    createUseStyles({
+      optionContainer: {
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        height: "100%",
+      },
+    })
+  const style = !bizzState.inTestingEnviroment ? useStyles() : {}
+  return <div className={style.optionContainer}>{children}</div>
+}
+
+export default BOptions
