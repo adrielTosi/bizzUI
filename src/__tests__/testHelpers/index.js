@@ -125,18 +125,4 @@ export const ids = {
   },
 }
 
-export const myQuestions = new questionMapper()
-// const firstOptionFromFirstQuestion = getByTestId(
-//   `option-item-${firstQuestion.id}-${firstQuestion.options.firstId}`
-// )
-// const secondOptionFromFirstQuestion = getByTestId(
-//   `option-item-${firstQuestion.id}-${firstQuestion.options.secondId}`
-// )
-// const checkedfirstOptionFromFirstQuestion = getByTestId(
-//   `checked-${firstQuestion.id}-${firstQuestion.options.firstId}`
-// )
-// const checkedsecondOptionFromFirstQuestion = getByTestId(
-//   `checked-${firstQuestion.id}-${firstQuestion.options.secondId}`
-// )
-
 export const questionItems = setCheckedKeyToOptions(questions, {})

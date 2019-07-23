@@ -48,7 +48,7 @@ describe("Checked functionality", () => {
     const BQuizz = getByTestId("bquizz-component")
     expect(BQuizz).toBeInTheDocument()
   })
-  test.only("only one option is selected after clicking in more that one option", () => {
+  test("only one option is selected after clicking in more that one option", () => {
     const { getByTestId } = render(<BQuizzContainer />)
 
     const { firstQuestion } = ids

@@ -97,6 +97,6 @@ export const BQuizzOrBAnswers = location => {
 
   return {
     ChosenComponent: () => <Renderer />,
-    path: page,
+    currentPath: page,
   }
 }
