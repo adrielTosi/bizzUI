@@ -10,14 +10,13 @@ import { BQuizzOrBAnswers } from "components/helpers"
  * @Renders `BQuizz` or `BAnswers` depending on the route.
  */
 const BQuizzContainer = ({ location }) => {
+  const { ChosenComponent, page } = BQuizzOrBAnswers(location)
   return (
     <BizzState>
       <div className="row">
         <div className="col-sm-12 col-md-8 order-lg-12">
-          <BQuizzOrBAnswers location={location} />
-          <div className="float-right">
-            <BSubmit />
-          </div>
+          {ChosenComponent()}
+          <div className="float-right">{page === "bizzUI" && <BSubmit />}</div>
         </div>
       </div>
     </BizzState>

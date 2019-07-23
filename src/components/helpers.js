@@ -7,6 +7,11 @@ import BOptionItem from "components/bizzUI/BOptionItem"
 import BQuizz from "components/bizzUI/BQuizz"
 import BAnswers from "components/bizzUI/answers/BAnswers"
 
+/**
+ * `RENDER CARD CHILDREN` divides children between two:
+ * `Title`: is always displayed above and renders only the first `BCardTitle` passed to children
+ * `Rest`: all the other childrens
+ */
 export const renderCardChildren = (children, style) => {
   const title = []
   const rest = []
@@ -27,6 +32,10 @@ export const renderCardChildren = (children, style) => {
   )
 }
 
+/**
+ * `QUESTION MAPPER`
+ * Renders all questions using the BizzUI components
+ */
 export const questionsMapper = (stateQuestionItems, pathname) => {
   const seeAnswers = pathname && pathname === "/answers"
 
@@ -60,7 +69,11 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
   )
 }
 
-export const BQuizzOrBAnswers = ({ location }) => {
+/**
+ * `BQUIZ OR BANSWERS`
+ * Renders `BQuizz` or `BAnswer` component based on the current route
+ */
+export const BQuizzOrBAnswers = location => {
   const { pathname } = location
 
   const pathNameMapper = {
@@ -72,15 +85,18 @@ export const BQuizzOrBAnswers = ({ location }) => {
 
   const page = pathNameMapper[pathname]
 
-  const renderer = () => {
+  const Renderer = () => {
     if (page === "bizzUI") {
       return <BQuizz location={location} />
     } else if (page === "answers") {
       return <BAnswers location={location} />
     } else {
-      return <p>Location Necessary</p>
+      return <p>No location or Undefined</p>
     }
   }
 
-  return renderer()
+  return {
+    ChosenComponent: () => <Renderer />,
+    path: page,
+  }
 }
