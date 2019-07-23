@@ -3,9 +3,10 @@ import { createUseStyles } from "react-jss"
 import PropTypes from "prop-types"
 
 import bizzContext from "contexts/bizzContext"
+import { BOptionItemStyles } from "./jssStyles"
 
 /**
- * BLOCK and CHECKED props are in PROPS
+ * BLOCK and CHECKED props are in ...PROPS
  */
 const BOptionItem = ({
   url,
@@ -17,52 +18,7 @@ const BOptionItem = ({
 }) => {
   const { checkSelectedOption, bizzState } = useContext(bizzContext)
   const useStyles =
-    !bizzState.inTestingEnviroment &&
-    createUseStyles({
-      optionItemContainer: ({ block, checked }) => {
-        const containerWidth = block ? "100%" : "50%"
-        const flexWrap = "wrap"
-        const alignItems = block ? "center" : "initial"
-        const selectedBackground = checked ? "#e8f7e5" : ""
-        return {
-          minHeight: 80,
-          width: containerWidth,
-          overflow: "hidden",
-          display: "flex",
-          flexWrap: flexWrap,
-          justifyContent: "center",
-          alignItems: alignItems,
-          padding: "8px",
-          cursor: "pointer",
-          backgroundColor: selectedBackground,
-          borderRadius: 8,
-        }
-      },
-      image: ({ block }) => {
-        const display = block ? "flex" : "block"
-        return {
-          width: "100%",
-          display: display,
-          textAlign: "center",
-        }
-      },
-      titles: {
-        display: "flex",
-        flexDirection: "column",
-        alingItems: "center",
-        textAlign: "center",
-      },
-      title: {
-        color: "#4f4f4f",
-        fontSize: "1em",
-        fontFamily: "'Open Sans', sans-serif",
-      },
-      subtitle: {
-        color: "#bdbdbd",
-        fontSize: "0.7em",
-        fontFamily: "'Open Sans', sans-serif",
-      },
-    })
+    !bizzState.inTestingEnviroment && createUseStyles(BOptionItemStyles)
 
   const style = !bizzState.inTestingEnviroment ? useStyles(props) : {}
 

@@ -5,7 +5,7 @@ import BCardTitle from "components/bizzUI/BCardTitle"
 import BOptions from "components/bizzUI/BOptions"
 import BOptionItem from "components/bizzUI/BOptionItem"
 
-import { setCheckedKeyToOptions } from "../contexts/bizzActions"
+import { setCheckedKeyToOptions } from "contexts/bizzActions"
 
 export const hasOnlyOneCheckedOption = question => {
   const votedOption = question.options.filter(option => {
@@ -124,5 +124,19 @@ export const ids = {
     },
   },
 }
+
+export const myQuestions = new questionMapper()
+// const firstOptionFromFirstQuestion = getByTestId(
+//   `option-item-${firstQuestion.id}-${firstQuestion.options.firstId}`
+// )
+// const secondOptionFromFirstQuestion = getByTestId(
+//   `option-item-${firstQuestion.id}-${firstQuestion.options.secondId}`
+// )
+// const checkedfirstOptionFromFirstQuestion = getByTestId(
+//   `checked-${firstQuestion.id}-${firstQuestion.options.firstId}`
+// )
+// const checkedsecondOptionFromFirstQuestion = getByTestId(
+//   `checked-${firstQuestion.id}-${firstQuestion.options.secondId}`
+// )
 
 export const questionItems = setCheckedKeyToOptions(questions, {})

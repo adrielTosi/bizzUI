@@ -7,7 +7,7 @@ import { render, fireEvent } from "@testing-library/react"
 
 import BizzContext from "contexts/bizzContext"
 import { questionsMapper } from "components/helpers"
-import { questionItems, hasOnlyOneCheckedOption, ids } from "../testHelpers"
+import { questionItems, hasOnlyOneCheckedOption, ids } from "./testHelpers"
 import { checkSelectedOption } from "contexts/bizzActions"
 
 /**

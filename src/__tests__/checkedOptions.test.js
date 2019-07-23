@@ -1,5 +1,6 @@
 /**
- * TESTS: CHECKED FUNCTIONALITY
+ * `INTEGRATION` -
+ *
  * To make sure that when more than one option is clicked in the same question
  * only one is checked.
  */
@@ -9,12 +10,16 @@ import { render, fireEvent } from "@testing-library/react"
 import BizzState from "contexts/bizzState"
 import BQuizz from "components/bizzUI/BQuizz"
 import BizzContext from "contexts/bizzContext"
-import { questionsMapper } from "components/helpers"
-import { questionItems, ids } from "../testHelpers"
+import { questionItems, ids, myQuestions } from "./testHelpers"
+
+const questionOne = "QUESTION_ONE"
+const questionTwo = "QUESTION_TWO"
+const optionOne = "OPTION_ONE"
+const optionTwo = "OPTION_TWO"
 
 /**
- * Does what BQuizz originally does: `set the questions` received by query to context
- * using a `context Action`
+ * Does what BQuizz originally does: `setQuestions()` - Set questions to context
+ * @param {func} setQuestions - BizzContext action.
  */
 const BQuizzWrapper = () => {
   const { stateQuestionItems } = questionItems
@@ -26,7 +31,7 @@ const BQuizzWrapper = () => {
 }
 
 /**
- * `Simulates BQuizzContainer`, which is just a presentational component that renders
+ * `Simulates BQuizzContainer`, which is just a presentational compTWOnt that renders
  * BQuizz with BizzState context
  * @param {Obj} initialState Additional `state` for bizzState
  * @param {Obj} providerValue Additional values for `value` prop in bizzState `Provider`
@@ -43,7 +48,7 @@ describe("Checked functionality", () => {
     const BQuizz = getByTestId("bquizz-component")
     expect(BQuizz).toBeInTheDocument()
   })
-  test("only one option is selected after clicking in more that one option", () => {
+  test.only("only one option is selected after clicking in more that one option", () => {
     const { getByTestId } = render(<BQuizzContainer />)
 
     const { firstQuestion } = ids
@@ -59,6 +64,7 @@ describe("Checked functionality", () => {
     const checkedfirstOptionFromFirstQuestion = getByTestId(
       `checked-${firstQuestion.id}-${firstQuestion.options.firstId}`
     )
+
     // Check if first option is checked
     expect(checkedfirstOptionFromFirstQuestion).toBeInTheDocument()
 
