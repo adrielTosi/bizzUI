@@ -26,7 +26,7 @@ export const renderCardChildren = (children, style) => {
 }
 
 export const questionsMapper = (stateQuestionItems, pathname) => {
-  const showAnswers = pathname === "/answers"
+  const seeAnswers = pathname && pathname === "/answers"
 
   return (
     <div data-testid="questions-mapper">
@@ -45,9 +45,9 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
                   subtitle={option.subtitle}
                   block={option.blockWidth}
                   checked={option.checked}
-                  // totalVotes={question.totalVotes}
-                  // optionVotes={option.votes}
-                  // showAnswers={showAnswers}
+                  totalVotes={question.totalVotes}
+                  optionVotes={option.votes}
+                  seeAnswers={seeAnswers}
                 />
               ))}
             </BOptions>

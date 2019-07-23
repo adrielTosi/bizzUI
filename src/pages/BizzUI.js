@@ -6,10 +6,10 @@ import Layout from "layouts/BQuestionLayout"
 import "bootstrap/dist/css/bootstrap.css"
 import "styles/index.scss"
 
-const BizzUI = () => {
+const BizzUI = ({ location }) => {
   return (
     <Layout>
-      <BQuizzContainer />
+      <BQuizzContainer location={location} />
     </Layout>
   )
 }

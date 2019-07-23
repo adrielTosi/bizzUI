@@ -1,12 +1,8 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Fade from "react-reveal/Fade"
 
-import BCard from "components/bizzUI/BCard"
-import BCardTitle from "components/bizzUI/BCardTitle"
-import BOptions from "components/bizzUI/BOptions"
-import BOptionItem from "components/bizzUI/BOptionItem"
 import bizzContext from "contexts/bizzContext"
+import { questionsMapper } from "components/helpers"
 
 const BQuizz = ({ location }) => {
   const query = useStaticQuery(graphql`
@@ -42,36 +38,12 @@ const BQuizz = ({ location }) => {
      * Set `location.pathname` to context
      */
     if (location) {
-      context.setLocation(location)
+      context.setLocationPathname(location)
     }
   }, [])
 
-  const questionsMapper = () => {
-    const { stateQuestionItems } = context.bizzState
-    console.log(context)
+  const { stateQuestionItems, pathname } = context.bizzState
 
-    return stateQuestionItems.map(question => (
-      <Fade Bottom wait={100}>
-        <BCard key={question.id}>
-          <BCardTitle title={question.title} />
-          <BOptions>
-            {question.options.map(option => (
-              <BOptionItem
-                key={option.id}
-                questionId={question.id}
-                optionId={option.id}
-                url={option.img.url}
-                title={option.title}
-                subtitle={option.subtitle}
-                block={option.blockWidth}
-                checked={option.checked}
-              />
-            ))}
-          </BOptions>
-        </BCard>
-      </Fade>
-    ))
-  }
   return (
     <div data-testid="bquizz-component">
       <div className="titleContainer">
@@ -80,7 +52,7 @@ const BQuizz = ({ location }) => {
           <span className="display-6">Thank you for voting!</span>
         )}
       </div>
-      {questionsMapper()}
+      {questionsMapper(stateQuestionItems, pathname)}
     </div>
   )
 }

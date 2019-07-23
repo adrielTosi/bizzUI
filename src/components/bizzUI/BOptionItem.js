@@ -14,6 +14,7 @@ const BOptionItem = ({
   subtitle,
   questionId,
   optionId,
+  seeAnswers,
   ...props
 }) => {
   const { checkSelectedOption, bizzState } = useContext(bizzContext)
@@ -56,6 +57,7 @@ BOptionItem.propTypes = {
   optionId: PropTypes.string.isRequired,
   block: PropTypes.bool,
   checked: PropTypes.bool.isRequired,
+  seeAnswers: PropTypes.bool.isRequired,
 }
 
 BOptionItem.defaultProps = {
