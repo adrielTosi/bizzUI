@@ -3,7 +3,7 @@ import {
   setCheckedKeyToOptions,
   checkSelectedOption,
   setHasVoted,
-  setLocation,
+  setLocationPathname,
 } from "./bizzActions"
 
 import {
@@ -11,7 +11,7 @@ import {
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
   SET_HAS_VOTED,
-  SET_LOCATION,
+  SET_LOCATION_PATHNAME,
 } from "./bizzTypes"
 
 const bizzReducer = (state, action) => {
@@ -33,8 +33,8 @@ const bizzReducer = (state, action) => {
     case SET_HAS_VOTED:
       return setHasVoted(payload, state)
 
-    case SET_LOCATION:
-      return setLocation(payload, state)
+    case SET_LOCATION_PATHNAME:
+      return setLocationPathname(payload, state)
     default:
       return state
   }

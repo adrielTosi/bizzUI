@@ -8,7 +8,7 @@ import BOptions from "components/bizzUI/BOptions"
 import BOptionItem from "components/bizzUI/BOptionItem"
 import bizzContext from "contexts/bizzContext"
 
-const BQuizz = () => {
+const BQuizz = ({ location }) => {
   const query = useStaticQuery(graphql`
     query {
       Bizz {
@@ -37,6 +37,12 @@ const BQuizz = () => {
     if (query) {
       context.setQuestions(query.Bizz.questionItems)
       context.setCheckedKeyToOptions(query.Bizz.questionItems)
+    }
+    /**
+     * Set `location.pathname` to context
+     */
+    if (location) {
+      context.setLocation(location)
     }
   }, [])
 

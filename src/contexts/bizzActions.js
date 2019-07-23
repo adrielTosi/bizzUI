@@ -72,11 +72,11 @@ export const setHasVoted = (bool, state) => {
   }
 }
 /**
- * `SET LOCATION`
+ * `SET LOCATION PATHNAME`
  */
-export const setLocation = (location, state) => {
+export const setLocationPathname = (location, state) => {
   return {
     ...state,
-    location,
+    pathname: location.pathname,
   }
 }

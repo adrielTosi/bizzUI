@@ -8,7 +8,7 @@ import {
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
   SET_HAS_VOTED,
-  SET_LOCATION,
+  SET_LOCATION_PATHNAME,
 } from "./bizzTypes"
 
 /**
@@ -67,8 +67,8 @@ const BizzState = ({
   const setHasVoted = bool => {
     dispatch({ type: SET_HAS_VOTED, payload: bool })
   }
-  const setLocation = location => {
-    dispatch({ type: SET_LOCATION, payload: location })
+  const setLocationPathname = location => {
+    dispatch({ type: SET_LOCATION_PATHNAME, payload: location })
   }
   /**
    * `PROVIDER`
@@ -81,7 +81,7 @@ const BizzState = ({
         setCheckedKeyToOptions,
         checkSelectedOption,
         setHasVoted,
-        setLocation,
+        setLocationPathname,
         ...additionalProviderValue,
       }}
     >
