@@ -4,6 +4,8 @@ import BCard from "components/bizzUI/BCard"
 import BCardTitle from "components/bizzUI/BCardTitle"
 import BOptions from "components/bizzUI/BOptions"
 import BOptionItem from "components/bizzUI/BOptionItem"
+import BQuizz from "components/bizzUI/BQuizz"
+import BAnswers from "components/bizzUI/answers/BAnswers"
 
 export const renderCardChildren = (children, style) => {
   const title = []
@@ -56,4 +58,29 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
       ))}
     </div>
   )
+}
+
+export const BQuizzOrBAnswers = ({ location }) => {
+  const { pathname } = location
+
+  const pathNameMapper = {
+    "/BizzUI": "bizzUI",
+    "/BizzUI/": "bizzUI",
+    "/answers": "answers",
+    "/answers/": "answers",
+  }
+
+  const page = pathNameMapper[pathname]
+
+  const renderer = () => {
+    if (page === "bizzUI") {
+      return <BQuizz location={location} />
+    } else if (page === "answers") {
+      return <BAnswers location={location} />
+    } else {
+      return <p>Location Necessary</p>
+    }
+  }
+
+  return renderer()
 }

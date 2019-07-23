@@ -5,6 +5,6 @@ export const client = new ApolloClient({
   uri: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
   fetch,
   headers: {
-    authorization: process.env.AUTH_TOKEN,
+    Authorization: `Bearer ${process.env.AUTH_TOKEN_MUTATION}`,
   },
 })
