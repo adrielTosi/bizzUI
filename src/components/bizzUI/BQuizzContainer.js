@@ -4,12 +4,12 @@ import BQuizz from "./BQuizz"
 import BizzState from "contexts/bizzState"
 import BSubmit from "components/bizzUI/submit/BSubmit"
 
-const BQuizzContainer = () => {
+const BQuizzContainer = ({ location }) => {
   return (
     <BizzState>
       <div className="row">
         <div className="col-sm-12 col-md-8 order-lg-12">
-          <BQuizz />
+          <BQuizz location={location} />
           <div className="float-right">
             <BSubmit />
           </div>

@@ -8,6 +8,7 @@ import {
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
   SET_HAS_VOTED,
+  SET_LOCATION,
 } from "./bizzTypes"
 
 /**
@@ -20,6 +21,9 @@ const BizzState = ({
   initialStateForTests,
   providerValueForTests,
 }) => {
+  /**
+   * `TESTING VARIABLES`
+   */
   const additionalInitialState = initialStateForTests
     ? initialStateForTests
     : {}
@@ -27,14 +31,23 @@ const BizzState = ({
     ? providerValueForTests
     : {}
 
+  /**
+   * `INITIAL STATE`
+   */
   const initialState = {
     stateQuestionItems: [],
     hasVoted: false,
     inTestingEnviroment: false,
     ...additionalInitialState,
   }
+  /**
+   * `REDUCER`
+   */
   const [bizzState, dispatch] = useReducer(bizzReducer, initialState)
 
+  /**
+   * `ACTIONS`
+   */
   const setQuestions = questions => {
     dispatch({ type: SET_QUESTIONS, payload: questions })
   }
@@ -51,11 +64,15 @@ const BizzState = ({
       },
     })
   }
-
   const setHasVoted = bool => {
     dispatch({ type: SET_HAS_VOTED, payload: bool })
   }
-
+  const setLocation = location => {
+    dispatch({ type: SET_LOCATION, payload: location })
+  }
+  /**
+   * `PROVIDER`
+   */
   return (
     <BizzContext.Provider
       value={{
@@ -64,6 +81,7 @@ const BizzState = ({
         setCheckedKeyToOptions,
         checkSelectedOption,
         setHasVoted,
+        setLocation,
         ...additionalProviderValue,
       }}
     >
