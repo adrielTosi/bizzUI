@@ -54,12 +54,13 @@ const BSubmit = () => {
   const [hasError, setError] = useState(false)
 
   const afterVoting = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
     setTimeout(context.setHasVoted(true), 0)
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   const updateVotes = mutation => {
-    console.log("updateVotes called")
+    console.log(`---------> ${process.env.AUTH_TOKEN}`)
+
     if (allQuestionsHaveAnswer(stateQuestionItems)) {
       setError(false)
       stateQuestionItems.forEach(question => {
