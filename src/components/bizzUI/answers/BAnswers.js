@@ -1,35 +1,20 @@
-import React from "react"
-import gql from "graphql-tag"
+import React, { useEffect } from "react"
 import { Query } from "react-apollo"
 
 import { questionsMapper } from "components/helpers"
-
-const GET_ANSWERS = gql`
-  {
-    questionItems {
-      totalVotes
-      id
-      title
-      options {
-        id
-        votes
-        blockWidth
-        img {
-          url
-        }
-      }
-    }
-  }
-`
+import { GET_ANSWERS } from "components/querys"
 
 const BAnswers = ({ location }) => {
-  console.log(`------> ${process.env.AUTH_TOKEN_MUTATION}}`)
+  useEffect(() => {
+    console.log("BAnswers rendered")
+  })
+
   return (
     <Query query={GET_ANSWERS}>
-      {({ loading, error, data }) => {
+      {({ loading, error, data, refetch }) => {
         if (loading) return <p>loading...</p>
         if (error) return <p>{error.message}</p>
-
+        console.log(data.questionItems)
         return questionsMapper(data.questionItems, location.pathname)
       }}
     </Query>

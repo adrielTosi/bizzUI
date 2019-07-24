@@ -1,44 +1,10 @@
 import React, { useContext, useState } from "react"
 import { Mutation } from "react-apollo"
-import gql from "graphql-tag"
 
 import BSubmitButton from "components/bizzUI/submit/BSubmitButton"
 import bizzContext from "contexts/bizzContext"
+import { UPDATE_VOTES_MUTATION } from "components/querys"
 
-//prettier-ignore
-const UPDATE_VOTES_MUTATION = gql`
-  mutation UpdateQuestionItem (
-    $questionId: ID!,
-    $questionTotalVotes: Int!,
-    $optionId: ID!,
-    $optionVotes: Int!
-    ) {
-    updateQuestionItem(
-      where: {
-        id: $questionId
-      }
-      data:{
-        totalVotes: $questionTotalVotes
-        options:{
-          update:[{
-            where:{
-              id: $optionId
-            }
-            data:{
-              votes: $optionVotes
-            }
-          }]
-        }
-      }
-    ){
-      totalVotes
-      options {
-        id
-        votes
-      }
-    }
-  }
-`
 const allQuestionsHaveAnswer = questions => {
   let passed = true
   questions.forEach(question => {
@@ -50,6 +16,7 @@ const allQuestionsHaveAnswer = questions => {
 
 const BSubmit = () => {
   const context = useContext(bizzContext)
+
   const { stateQuestionItems } = context.bizzState
   const [hasError, setError] = useState(false)
 
@@ -58,6 +25,7 @@ const BSubmit = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  // EXTRACT
   const updateVotes = mutation => {
     console.log(`---------> ${process.env.AUTH_TOKEN}`)
 
@@ -79,6 +47,8 @@ const BSubmit = () => {
             optionVotes: updatedOptionVotes,
           },
         }
+        console.log("==INSIDE UPDATE VOTES IN BSUBMIT")
+        console.log(mutationVariables)
         mutation(mutationVariables)
         afterVoting()
       })

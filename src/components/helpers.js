@@ -37,8 +37,11 @@ export const renderCardChildren = (children, style) => {
  * Renders all questions using the BizzUI components
  */
 export const questionsMapper = (stateQuestionItems, pathname) => {
-  const seeAnswers = pathname && pathname === "/answers"
-
+  const seeAnswersMapper = {
+    "/answers": true,
+    "/answers/": true,
+  }
+  const seeAnswers = pathname && seeAnswersMapper[pathname]
   return (
     <div data-testid="questions-mapper">
       {stateQuestionItems.map(question => (

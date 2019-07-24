@@ -15,6 +15,8 @@ const BOptionItem = ({
   questionId,
   optionId,
   seeAnswers,
+  totalVotes,
+  optionVotes,
   ...props
 }) => {
   const { checkSelectedOption, bizzState } = useContext(bizzContext)
@@ -27,6 +29,11 @@ const BOptionItem = ({
     checkSelectedOption(bizzState.stateQuestionItems, questionId, optionId)
   }
 
+  const percentageAnswer = () => {
+    const percentage = (optionVotes / totalVotes) * 100
+    return `${percentage}%`
+  }
+
   return (
     <div
       data-testid={`option-item-${questionId}-${optionId}`}
@@ -34,6 +41,7 @@ const BOptionItem = ({
       onClick={handleClick}
     >
       {props.checked && (
+        // The below span is used for testing, DO NOT touch
         <span data-testid={`checked-${questionId}-${optionId}`}></span>
       )}
       <div className={style.image}>
@@ -45,6 +53,7 @@ const BOptionItem = ({
           {subtitle && <span className={style.subtitle}>{subtitle}</span>}
         </div>
       )}
+      {seeAnswers && <div className={style.titles}>{percentageAnswer()}</div>}
     </div>
   )
 }
@@ -58,6 +67,8 @@ BOptionItem.propTypes = {
   block: PropTypes.bool,
   checked: PropTypes.bool.isRequired,
   seeAnswers: PropTypes.bool.isRequired,
+  totalVotes: PropTypes.number,
+  optionVotes: PropTypes.number,
 }
 
 BOptionItem.defaultProps = {
