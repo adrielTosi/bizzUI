@@ -16,7 +16,7 @@ const SharedComponent = ({ stateQuestionItems, pathname }) => (
 
 /**
  * The job of this component is simply to `Query` the database or cache
- * and set the data to `context`. All the questions manipulations are done in `bizzState` context.
+ * and set the data to `context`. All the data manipulation is done in `bizzState` context.
  */
 const BQuizz = ({ location }) => {
   const context = useContext(bizzContext)
@@ -25,6 +25,7 @@ const BQuizz = ({ location }) => {
    * Tracks if it's the first render of the component. It is necessary for conditionally making
    * a query and setting it to context.
    * @if `not the first render`, the data is fetched from `context`
+   * @Todo `useIsFirstRender custom hook`
    */
   const firstRender = useRef(true)
   useEffect(() => {
@@ -70,4 +71,4 @@ const BQuizz = ({ location }) => {
   }
 }
 
-export default React.memo(BQuizz, true)
+export default BQuizz

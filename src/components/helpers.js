@@ -158,7 +158,7 @@ export const removeCheckedKeyFromOptions = questions => {
   return newQuestionItems
 }
 /**
- *
+ * `UPDATE QUESTIONS AND OPTIONS VOTES`
  * @param {Array of Objects} questions stateQuestionItems from context
  * @param {Array of Objects} valuesToUpdate Updated values based on values
  *        defined by `defineMutationVariables()`

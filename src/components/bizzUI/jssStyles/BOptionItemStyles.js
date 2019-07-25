@@ -7,7 +7,6 @@ export default {
     return {
       minHeight: 80,
       width: containerWidth,
-      overflow: "hidden",
       display: "flex",
       flexWrap: flexWrap,
       justifyContent: "center",
@@ -16,6 +15,7 @@ export default {
       cursor: "pointer",
       backgroundColor: selectedBackground,
       borderRadius: 8,
+      position: "relative",
     }
   },
   image: ({ block }) => {
@@ -41,5 +41,10 @@ export default {
     color: "#bdbdbd",
     fontSize: "0.7em",
     fontFamily: "'Open Sans', sans-serif",
+  },
+  checked: {
+    position: "absolute",
+    right: -10,
+    top: -10,
   },
 }

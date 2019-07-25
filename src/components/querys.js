@@ -52,6 +52,8 @@ export const GET_ANSWERS = gql`
         id
         votes
         blockWidth
+        title
+        subtitle
         img {
           url
         }

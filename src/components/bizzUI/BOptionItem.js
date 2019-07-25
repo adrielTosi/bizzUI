@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss"
 import PropTypes from "prop-types"
 
 import bizzContext from "contexts/bizzContext"
+import CheckedSign from "components/CheckedSign"
 import { BOptionItemStyles } from "./jssStyles"
 
 /**
@@ -29,10 +30,13 @@ const BOptionItem = ({
     checkSelectedOption(bizzState.stateQuestionItems, questionId, optionId)
   }
 
-  // const percentageAnswer = () => {
-  //   const percentage = (optionVotes / totalVotes) * 100
-  //   return `${percentage}%`
-  // }
+  const percentageAnswer = +((optionVotes / totalVotes) * 100).toFixed(2)
+
+  const barColor = () => {
+    if (percentageAnswer < 25) return "bg-darger"
+    if (percentageAnswer >= 25 && percentageAnswer <= 60) return "bg-warning"
+    return "bg-success"
+  }
 
   return (
     <div
@@ -40,25 +44,45 @@ const BOptionItem = ({
       className={style.optionItemContainer}
       onClick={handleClick}
     >
-      {props.checked && (
-        // The below span is used for testing, DO NOT touch
-        <span data-testid={`checked-${questionId}-${optionId}`}></span>
-      )}
-      <div className={style.image}>
-        <img src={url} alt="img" />
+      <div>
+        {props.checked && (
+          // The below span is used for testing, DO NOT touch
+          <span
+            className={style.checked}
+            data-testid={`checked-${questionId}-${optionId}`}
+          >
+            <CheckedSign checked={props.checked}/>
+          </span>
+        )}
+
+        <div className={style.image}>
+          <img src={url} alt="img" />
+        </div>
+
+        {(title || subtitle) && !seeAnswers && (
+          <div className={style.titles}>
+            {title && <span className={style.title}>{title}</span>}
+            {subtitle && <span className={style.subtitle}>{subtitle}</span>}
+          </div>
+        )}
+
+        {seeAnswers && (
+          <div className="mt-3 mb-1" style={{ textAlign: "center" }}>
+            <span>{`${percentageAnswer} %`}</span>
+            <div className="progress w-100" style={{ height: "8px" }}>
+              <div
+                className={`progress-bar ${barColor()}`}
+                style={{
+                  width: `${percentageAnswer}%`,
+                }}
+                aria-valuenow={`${percentageAnswer}`}
+                aria-valuemin="0"
+                aria-valuemax="100"
+              />
+            </div>
+          </div>
+        )}
       </div>
-      {(title || subtitle) && (
-        <div className={style.titles}>
-          {title && <span className={style.title}>{title}</span>}
-          {subtitle && <span className={style.subtitle}>{subtitle}</span>}
-        </div>
-      )}
-      {seeAnswers && (
-        <div className={style.titles}>
-          <p>Total Votes: {totalVotes}</p>
-          <p>Option Votes: {optionVotes}</p>
-        </div>
-      )}
     </div>
   )
 }
@@ -71,7 +95,7 @@ BOptionItem.propTypes = {
   optionId: PropTypes.string.isRequired,
   block: PropTypes.bool,
   checked: PropTypes.bool.isRequired,
-  seeAnswers: PropTypes.bool.isRequired,
+  seeAnswers: PropTypes.bool,
   totalVotes: PropTypes.number,
   optionVotes: PropTypes.number,
 }

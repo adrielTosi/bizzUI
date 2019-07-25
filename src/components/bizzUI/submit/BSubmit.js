@@ -47,13 +47,14 @@ const BSubmit = () => {
       )
       /**
        * Writes to the cache the same questionItems sent to the server through the mutation above,
-       * so when the user visits "/answer", if he has voted, no query will be sent to the server
+       * so when the user visits "/answers", if he has voted, no query will be sent to the server.
+       * And when coming from "/answers" back to "/BizzUI" the votes will be already updated.
+       * So when sending the mutation, it will be based on updated data.
        */
       client.writeData({
         query: GET_ANSWERS,
         data: {
           questionItems: updatedQuestionItems,
-          hasVoted: true,
         },
       })
       afterVoting()
