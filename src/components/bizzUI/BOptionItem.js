@@ -29,10 +29,10 @@ const BOptionItem = ({
     checkSelectedOption(bizzState.stateQuestionItems, questionId, optionId)
   }
 
-  const percentageAnswer = () => {
-    const percentage = (optionVotes / totalVotes) * 100
-    return `${percentage}%`
-  }
+  // const percentageAnswer = () => {
+  //   const percentage = (optionVotes / totalVotes) * 100
+  //   return `${percentage}%`
+  // }
 
   return (
     <div
@@ -53,7 +53,12 @@ const BOptionItem = ({
           {subtitle && <span className={style.subtitle}>{subtitle}</span>}
         </div>
       )}
-      {seeAnswers && <div className={style.titles}>{percentageAnswer()}</div>}
+      {seeAnswers && (
+        <div className={style.titles}>
+          <p>Total Votes: {totalVotes}</p>
+          <p>Option Votes: {optionVotes}</p>
+        </div>
+      )}
     </div>
   )
 }
