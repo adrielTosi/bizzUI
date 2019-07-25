@@ -1,6 +1,6 @@
 import React from "react"
 
-import BQuizzContainer from "components/BizzUI/BQuizzContainer.js"
+import BQuizzContainer from "..components/bizzUI/BQuizzContainer.js"
 import Layout from "layouts/BQuestionLayout"
 
 import "bootstrap/dist/css/bootstrap.css"
