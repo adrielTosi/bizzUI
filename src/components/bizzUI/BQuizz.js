@@ -1,37 +1,74 @@
-import React from 'react'
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useContext, useEffect, useRef } from "react"
+import { Query } from "react-apollo"
 
-const BQuizz = () => {
-  const { Bizz } = useStaticQuery(graphql`
-    query {
-      Bizz {
-        questions {
-          allQuestionsTotalVotes
-          questionItems{
-            id
-            title
-            totalVotes
-            options {
-              id
-              title
-              subtitle
-              votes
-              img {
-                id
-                url
-              }
-            } 
-          }
-        }
-      }
+import bizzContext from "contexts/bizzContext"
+import { questionsMapper } from "components/helpers"
+import { GET_ANSWERS } from "components/querys"
+
+const SharedComponent = ({ stateQuestionItems, pathname }) => (
+  <div data-testid="bquizz-component">
+    <div className="titleContainer">
+      <h3>Quizz</h3>
+    </div>
+    {questionsMapper(stateQuestionItems, pathname)}
+  </div>
+)
+
+/**
+ * The job of this component is simply to `Query` the database or cache
+ * and set the data to `context`. All the data manipulation is done in `bizzState` context.
+ */
+const BQuizz = ({ location }) => {
+  const context = useContext(bizzContext)
+
+  /**
+   * Tracks if it's the first render of the component. It is necessary for conditionally making
+   * a query and setting it to context.
+   * @if `not the first render`, the data is fetched from `context`
+   * @Todo `useIsFirstRender custom hook`
+   */
+  const firstRender = useRef(true)
+  useEffect(() => {
+    firstRender.current = false
+  }, [])
+
+  const contextSetup = data => {
+    context.setQuestions(data.questionItems)
+    context.setCheckedKeyToOptions(data.questionItems)
+    if (location) {
+      context.setLocationPathname(location)
     }
-  `)
+  }
 
-  return (
-    <h2>
-      {Bizz.questions[0].allQuestionsTotalVotes}
-    </h2>
-  )
+  if (firstRender.current) {
+    return (
+      <Query query={GET_ANSWERS}>
+        {({ error, loading, data }) => {
+          if (loading) return <p>Loading...</p>
+          if (error) return <p>{error.message}</p>
+          if (data) contextSetup(data)
+
+          const { stateQuestionItems, pathname } = context.bizzState
+
+          return (
+            <SharedComponent
+              stateQuestionItems={stateQuestionItems}
+              pathname={pathname}
+              context={context}
+            />
+          )
+        }}
+      </Query>
+    )
+  } else {
+    const { stateQuestionItems, pathname } = context.bizzState
+    return (
+      <SharedComponent
+        stateQuestionItems={stateQuestionItems}
+        pathname={pathname}
+      />
+    )
+  }
 }
 
 export default BQuizz

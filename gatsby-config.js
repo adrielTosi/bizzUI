@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,10 +30,10 @@ module.exports = {
     },
     {
     resolve: "gatsby-source-graphql",
-        options: {
-          typeName: "BIZZ",
-          fieldName: "Bizz",
-          url: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
+    options: {
+      typeName: "BIZZ",
+      fieldName: "Bizz",
+      url: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
     },
 },
     // this (optional) plugin enables Progressive Web App + Offline functionality
