@@ -29,6 +29,7 @@ export const UPDATE_VOTES_MUTATION = gql`
         }
       }
     ){
+      id
       totalVotes
       options {
         id
