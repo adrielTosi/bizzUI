@@ -1,43 +1,24 @@
-import React from "react"
+import { useContext } from "react"
 import { createUseStyles } from "react-jss"
 
-// TODO: add props to modify style and default props
-const useStyle = createUseStyles({
-  cardContainer: {
-    minWidth: 250,
-    maxWidth: 450,
-    minHeight: 250,
-    borderRadius: 8,
-    border: "1px solid #8DE971",
-    backgroundColor: "#f7fff5",
-    padding: 16,
-    marginBottom: 24
-  },
-})
+import BizzContext from "contexts/bizzContext"
+import { BCardStyles } from "./jssStyles"
+import { renderCardChildren } from "components/helpers"
 
 const BCard = ({ children }) => {
-  const style = useStyle()
+  const { bizzState } = useContext(BizzContext)
 
-  const renderChildren = () => {
-    const title = []
-    const rest = []
-    // Separates the children into Title and Rest, so title is always displayed above
-    const arrayChildren = React.Children.toArray(children)
-    arrayChildren.forEach(child => {
-      if (child.type && child.type.name === "BCardTitle") {
-        title.push(child)
-      } else {
-        rest.push(child)
-      }
-    })
-    return (
-      <div className={style.cardContainer}>
-        <div>{title.length !== 0 && title[0]}</div>
-        <div>{rest}</div>
-      </div>
-    )
-  }
-  return renderChildren()
+  const useStyles =
+    !bizzState.inTestingEnviroment && createUseStyles(BCardStyles)
+
+  const style = !bizzState.inTestingEnviroment ? useStyles() : {}
+
+  /**
+   * `renderCardChildren()` divides children between two:
+   * `Title`: is always displayed above and renders only the first `BCardTitle` passed to children
+   * `Rest`: all the other childrens
+   */
+  return renderCardChildren(children, style)
 }
 
 export default BCard

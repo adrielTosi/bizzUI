@@ -1,17 +1,24 @@
 import React from "react"
 
-import BQuizz from "./BQuizz"
 import BizzState from "contexts/bizzState"
 import BSubmit from "components/bizzUI/submit/BSubmit"
+import { BQuizzOrBAnswers } from "components/helpers"
 
-const BQuizzContainer = () => {
+/**
+ * This component is rendered in both ``Answers`` and ``BizzUI`` pages
+ * so it requires `location` props to see in which one it is.
+ * @Renders `BQuizz` or `BAnswers` depending on the route.
+ */
+const BQuizzContainer = ({ location }) => {
+  const { ChosenComponent, currentPath } = BQuizzOrBAnswers(location)
+  console.log(currentPath)
   return (
     <BizzState>
       <div className="row">
         <div className="col-sm-12 col-md-8 order-lg-12">
-          <BQuizz />
+          {ChosenComponent()}
           <div className="float-right">
-            <BSubmit />
+            {currentPath === "bizzUI" && <BSubmit />}
           </div>
         </div>
       </div>

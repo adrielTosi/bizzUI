@@ -7,17 +7,47 @@ import {
   SET_QUESTIONS,
   SET_CHECKED_KEY_TO_OPTIONS,
   CHECK_SELECTED_OPTION,
-  SET_HAS_VOTED
+  SET_HAS_VOTED,
+  SET_LOCATION_PATHNAME,
 } from "./bizzTypes"
 
-const initialState = {
-  stateQuestionItems: [],
-  hasVoted: false
-}
+/**
+ * Wrapper with context. Wraps the whole of BizzUI components giving `Global State`.
+ * @param {Obj} initialStateForTests For `tests` only
+ * @param {Obj} providerValueForTests For `tests` only
+ */
+const BizzState = ({
+  children,
+  initialStateForTests,
+  providerValueForTests,
+}) => {
+  /**
+   * `TESTING VARIABLES`
+   */
+  const additionalInitialState = initialStateForTests
+    ? initialStateForTests
+    : {}
+  const additionalProviderValue = providerValueForTests
+    ? providerValueForTests
+    : {}
 
-const BizzState = ({ children }) => {
+  /**
+   * `INITIAL STATE`
+   */
+  const initialState = {
+    stateQuestionItems: [],
+    hasVoted: false,
+    inTestingEnviroment: false,
+    ...additionalInitialState,
+  }
+  /**
+   * `REDUCER`
+   */
   const [bizzState, dispatch] = useReducer(bizzReducer, initialState)
 
+  /**
+   * `ACTIONS`
+   */
   const setQuestions = questions => {
     dispatch({ type: SET_QUESTIONS, payload: questions })
   }
@@ -34,10 +64,15 @@ const BizzState = ({ children }) => {
       },
     })
   }
-  const setHasVoted = (bool) => {
+  const setHasVoted = bool => {
     dispatch({ type: SET_HAS_VOTED, payload: bool })
   }
-
+  const setLocationPathname = location => {
+    dispatch({ type: SET_LOCATION_PATHNAME, payload: location })
+  }
+  /**
+   * `PROVIDER`
+   */
   return (
     <BizzContext.Provider
       value={{
@@ -45,7 +80,9 @@ const BizzState = ({ children }) => {
         setQuestions,
         setCheckedKeyToOptions,
         checkSelectedOption,
-        setHasVoted
+        setHasVoted,
+        setLocationPathname,
+        ...additionalProviderValue,
       }}
     >
       {children}

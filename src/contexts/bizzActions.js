@@ -1,10 +1,15 @@
+/**
+ * `SET QUESTIONS`
+ */
 export const setQuestions = (questions, state) => {
   return {
     ...state,
     stateQuestionItems: questions,
   }
 }
-
+/**
+ * `SET CHECKED KEYS TO OPTIONS`
+ */
 export const setCheckedKeyToOptions = (questions, state) => {
   const newQuestionItems = questions.map(item => {
     return {
@@ -22,8 +27,12 @@ export const setCheckedKeyToOptions = (questions, state) => {
     stateQuestionItems: newQuestionItems,
   }
 }
-
+/**
+ * `UNCHECK ALL QUESTION OPTIONS`
+ */
 export const uncheckAllQuestionOptions = (questions, questionId) => {
+  console.log("questions at uncheckAllQuestionOptions ")
+  console.log(questions)
   questions.forEach(question => {
     if (question.id === questionId) {
       question.options.forEach(option => (option.checked = false))
@@ -31,9 +40,11 @@ export const uncheckAllQuestionOptions = (questions, questionId) => {
   })
   return questions
 }
-
 /**
  * TODO: WRITE UNIT TESTS
+ */
+/**
+ * `CHECK SELECTED OPTION`
  */
 export const checkSelectedOption = (questions, questionId, optionId, state) => {
   const newQuestionItems = uncheckAllQuestionOptions(questions, questionId)
@@ -51,10 +62,21 @@ export const checkSelectedOption = (questions, questionId, optionId, state) => {
     stateQuestionItems: newQuestionItems,
   }
 }
-
+/**
+ * `SET HAS VOTED`
+ */
 export const setHasVoted = (bool, state) => {
   return {
     ...state,
     hasVoted: bool,
+  }
+}
+/**
+ * `SET LOCATION PATHNAME`
+ */
+export const setLocationPathname = (location, state) => {
+  return {
+    ...state,
+    pathname: location.pathname,
   }
 }

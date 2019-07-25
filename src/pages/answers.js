@@ -6,7 +6,7 @@ import Layout from "layouts/BQuestionLayout"
 import "bootstrap/dist/css/bootstrap.css"
 import "styles/index.scss"
 
-const BizzUI = ({ location }) => {
+const answers = ({ location }) => {
   return (
     <Layout>
       <BQuizzContainer location={location} />
@@ -14,4 +14,4 @@ const BizzUI = ({ location }) => {
   )
 }
 
-export default BizzUI
+export default answers

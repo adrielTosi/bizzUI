@@ -1,80 +1,74 @@
-import React, { useContext, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Fade from "react-reveal/Fade"
+import React, { useContext, useEffect, useRef } from "react"
+import { Query } from "react-apollo"
 
-import BCard from "components/bizzUI/BCard"
-import BCardTitle from "components/bizzUI/BCardTitle"
-import BOptions from "components/bizzUI/BOptions"
-import BOptionItem from "components/bizzUI/BOptionItem"
 import bizzContext from "contexts/bizzContext"
+import { questionsMapper } from "components/helpers"
+import { GET_ANSWERS } from "components/querys"
 
-const BQuizz = () => {
-  const { Bizz } = useStaticQuery(graphql`
-    query {
-      Bizz {
-        questionItems {
-          totalVotes
-          id
-          title
-          options {
-            id
-            title
-            votes
-            subtitle
-            blockWidth
-            img {
-              url
-            }
-          }
-        }
-      }
-    }
-  `)
+const SharedComponent = ({ stateQuestionItems, pathname }) => (
+  <div data-testid="bquizz-component">
+    <div className="titleContainer">
+      <h3>Quizz</h3>
+    </div>
+    {questionsMapper(stateQuestionItems, pathname)}
+  </div>
+)
 
+/**
+ * The job of this component is simply to `Query` the database or cache
+ * and set the data to `context`. All the data manipulation is done in `bizzState` context.
+ */
+const BQuizz = ({ location }) => {
   const context = useContext(bizzContext)
 
+  /**
+   * Tracks if it's the first render of the component. It is necessary for conditionally making
+   * a query and setting it to context.
+   * @if `not the first render`, the data is fetched from `context`
+   * @Todo `useIsFirstRender custom hook`
+   */
+  const firstRender = useRef(true)
   useEffect(() => {
-    context.setQuestions(Bizz.questionItems)
-    context.setCheckedKeyToOptions(Bizz.questionItems)
+    firstRender.current = false
   }, [])
 
-  const questionsMapper = () => {
-    const { stateQuestionItems } = context.bizzState
-    console.log(context)
-
-    return stateQuestionItems.map(question => (
-      <Fade Bottom wait={100}>
-        <BCard key={question.id}>
-          <BCardTitle title={question.title} />
-          <BOptions>
-            {question.options.map(option => (
-              <BOptionItem
-                key={option.id}
-                questionId={question.id}
-                optionId={option.id}
-                url={option.img.url}
-                title={option.title}
-                subtitle={option.subtitle}
-                block={option.blockWidth}
-                checked={option.checked}
-              />
-            ))}
-          </BOptions>
-        </BCard>
-      </Fade>
-    ))
+  const contextSetup = data => {
+    context.setQuestions(data.questionItems)
+    context.setCheckedKeyToOptions(data.questionItems)
+    if (location) {
+      context.setLocationPathname(location)
+    }
   }
-  return (
-    <div>
-      <div className="titleContainer">
-        <h3>Quizz</h3>
-        {context.bizzState.hasVoted && (
-          <span className="display-6">Thank you for voting!</span>
-        )}
-      </div>
-      {questionsMapper()}
-    </div>
-  )
+
+  if (firstRender.current) {
+    return (
+      <Query query={GET_ANSWERS}>
+        {({ error, loading, data }) => {
+          if (loading) return <p>Loading...</p>
+          if (error) return <p>{error.message}</p>
+          if (data) contextSetup(data)
+
+          const { stateQuestionItems, pathname } = context.bizzState
+
+          return (
+            <SharedComponent
+              stateQuestionItems={stateQuestionItems}
+              pathname={pathname}
+              context={context}
+            />
+          )
+        }}
+      </Query>
+    )
+  } else {
+    const { stateQuestionItems, pathname } = context.bizzState
+    return (
+      <SharedComponent
+        stateQuestionItems={stateQuestionItems}
+        pathname={pathname}
+      />
+    )
+  }
 }
 
 export default BQuizz
