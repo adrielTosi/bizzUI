@@ -41,6 +41,7 @@ const BQuizz = ({ location }) => {
   }
 
   if (firstRender.current) {
+    console.log(process.env.GATSBY_AUTH_TOKEN_MUTATION)
     return (
       <Query query={GET_ANSWERS}>
         {({ error, loading, data }) => {
