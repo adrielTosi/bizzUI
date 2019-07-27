@@ -44,14 +44,14 @@ const BOptionItem = ({
       className={style.optionItemContainer}
       onClick={handleClick}
     >
-      <div>
+      <div className={style.insideContainer}>
         {props.checked && (
           // The below span is used for testing, DO NOT touch
           <span
             className={style.checked}
             data-testid={`checked-${questionId}-${optionId}`}
           >
-            <CheckedSign checked={props.checked}/>
+            <CheckedSign checked={props.checked} />
           </span>
         )}
 

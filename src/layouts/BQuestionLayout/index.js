@@ -1,18 +1,16 @@
-import React from 'react'
-import Header from './Header'
+import React from "react"
+import Header from "./Header"
 
-import '../../styles/BQuestionsLayout.scss' 
+import "../../styles/BQuestionsLayout.scss"
 
-const BQuestionsLayout = ({children}) => {
+const BQuestionsLayout = ({ children }) => {
   return (
-     <div>
-        <Header />
-        <main className="mt-5">
-          <div className="container">
-            {children}
-          </div>
-        </main>
-     </div>
+    <div>
+      <Header />
+      <main className="mt-4">
+        <div className="container">{children}</div>
+      </main>
+    </div>
   )
 }
 

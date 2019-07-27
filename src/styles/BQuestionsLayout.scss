@@ -1,8 +1,23 @@
-@import 'variables';
+@import "variables";
 
 .header {
-  height: 50px;
-  background-color: $primary;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
+  font-family: "Montserrat", sans-serif;
+  border-top: 3px solid $primary;
+}
+
+.links {
+  list-style-type: none;
+  margin-bottom: 0 !important;
+  a {
+    color: $primary;
+    text-decoration: none;
+    // font-weight: 600;
+    &:hover {
+      text-decoration: none;
+      color: $secundary;
+    }
+  }
+  @media (max-width: 400px) {
+    padding: 0;
+  }
 }

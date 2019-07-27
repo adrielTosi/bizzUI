@@ -11,7 +11,7 @@ const BCardTitle = ({ title }) => {
   const style = !bizzState.inTestingEnviroment ? useStyles() : {}
   return (
     <div className={style.cardTitleContainer}>
-      <span className={style.cardTitle}>{title}</span>
+      <div className={style.cardTitle}>{title}</div>
     </div>
   )
 }
