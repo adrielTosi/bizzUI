@@ -1,0 +1,19 @@
+@import "variables";
+
+.title-container {
+  margin-bottom: 3em;
+  color: $primary;
+}
+
+.title {
+  font-size: 2.4em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: $fade-text;
+  font-size: 0.8em;
+  line-height: 1.2 !important;
+  width: 70%;
+}

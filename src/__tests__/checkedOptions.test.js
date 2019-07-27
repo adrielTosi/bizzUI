@@ -31,8 +31,9 @@ const mocks = [
 ]
 
 /**
- * Does what BQuizz originally does: `setQuestions()` - Set questions to context
- * @param {func} setQuestions - BizzContext action.
+ * Does what BQuizz originally does:
+ * `Query` the database - Being mocked here
+ * `Set Questions` to context
  */
 const BQuizzWrapper = () => {
   return (
@@ -44,7 +45,7 @@ const BQuizzWrapper = () => {
 
 /**
  * `Simulates BQuizzContainer`, which is just a presentational component that renders
- * BQuizz with BizzState context. The original component depends on `location` props
+ * BQuizz or BAnswers with BizzState context. The original component depends on `location` props
  * to render correctly, which is why is being mocked here.
  */
 const BQuizzContainer = () => (

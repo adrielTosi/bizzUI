@@ -45,7 +45,7 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
   return (
     <div data-testid="questions-mapper">
       {stateQuestionItems.map(question => (
-        <Fade Bottom wait={500}>
+        <Fade Bottom wait={300} key={question.id}>
           <BCard key={question.id}>
             <BCardTitle title={question.title} />
             <BOptions>

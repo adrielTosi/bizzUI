@@ -5,12 +5,6 @@ import bizzContext from "contexts/bizzContext"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
 
-const SharedComponent = ({ stateQuestionItems, pathname }) => (
-  <div data-testid="bquizz-component">
-    {questionsMapper(stateQuestionItems, pathname)}
-  </div>
-)
-
 /**
  * The job of this component is simply to `Query` the database or cache
  * and set the data to `context`. All the data manipulation is done in `bizzState` context.
@@ -38,7 +32,6 @@ const BQuizz = ({ location }) => {
   }
 
   if (firstRender.current) {
-    console.log(process.env.GATSBY_AUTH_TOKEN_MUTATION)
     return (
       <Query query={GET_ANSWERS}>
         {({ error, loading, data }) => {
@@ -46,25 +39,16 @@ const BQuizz = ({ location }) => {
           if (error) return <p>{error.message}</p>
           if (data) contextSetup(data)
 
-          const { stateQuestionItems, pathname } = context.bizzState
-
-          return (
-            <SharedComponent
-              stateQuestionItems={stateQuestionItems}
-              pathname={pathname}
-              context={context}
-            />
-          )
+          return null
         }}
       </Query>
     )
   } else {
     const { stateQuestionItems, pathname } = context.bizzState
     return (
-      <SharedComponent
-        stateQuestionItems={stateQuestionItems}
-        pathname={pathname}
-      />
+      <div data-testid="bquizz-component">
+        {questionsMapper(stateQuestionItems, pathname)}
+      </div>
     )
   }
 }
