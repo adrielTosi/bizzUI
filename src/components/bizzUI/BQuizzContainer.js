@@ -11,7 +11,6 @@ import { BQuizzOrBAnswers } from "components/helpers"
  */
 const BQuizzContainer = ({ location }) => {
   const { ChosenComponent, currentPath } = BQuizzOrBAnswers(location)
-  console.log(currentPath)
   return (
     <BizzState>
       <div className="row">
@@ -21,6 +20,7 @@ const BQuizzContainer = ({ location }) => {
             {currentPath === "bizzUI" && <BSubmit />}
           </div>
         </div>
+        {/* {currentPath === "bizzUI" && <div className="col-md-4 col-sm-12"></div>} */}
       </div>
     </BizzState>
   )

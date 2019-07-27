@@ -4,54 +4,67 @@
  * To make sure that when more than one option is clicked in the same question
  * only one is checked.
  */
-import React, { useContext, useEffect } from "react"
+import React from "react"
 import { render, fireEvent } from "@testing-library/react"
+import { MockedProvider } from "react-apollo/test-utils"
+import wait from "waait"
 
 import BizzState from "contexts/bizzState"
 import BQuizz from "components/bizzUI/BQuizz"
-import BizzContext from "contexts/bizzContext"
-import { questionItems, ids, myQuestions } from "./testHelpers"
+import { questionItems, ids } from "./testHelpers"
+import { GET_ANSWERS } from "components/querys"
 
-const questionOne = "QUESTION_ONE"
-const questionTwo = "QUESTION_TWO"
-const optionOne = "OPTION_ONE"
-const optionTwo = "OPTION_TWO"
+/**
+ * `QUERY MOCK`
+ */
+const mocks = [
+  {
+    request: {
+      query: GET_ANSWERS,
+    },
+    result: {
+      data: {
+        questionItems: questionItems.stateQuestionItems,
+      },
+    },
+  },
+]
 
 /**
  * Does what BQuizz originally does: `setQuestions()` - Set questions to context
  * @param {func} setQuestions - BizzContext action.
  */
 const BQuizzWrapper = () => {
-  const { stateQuestionItems } = questionItems
-  const context = useContext(BizzContext)
-  useEffect(() => {
-    context.setQuestions(stateQuestionItems)
-  }, [])
-  return <BQuizz />
+  return (
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <BQuizz />
+    </MockedProvider>
+  )
 }
 
 /**
- * `Simulates BQuizzContainer`, which is just a presentational compTWOnt that renders
- * BQuizz with BizzState context
- * @param {Obj} initialState Additional `state` for bizzState
- * @param {Obj} providerValue Additional values for `value` prop in bizzState `Provider`
+ * `Simulates BQuizzContainer`, which is just a presentational component that renders
+ * BQuizz with BizzState context. The original component depends on `location` props
+ * to render correctly, which is why is being mocked here.
  */
-const BQuizzContainer = (initialState, providerValue) => (
+const BQuizzContainer = () => (
   <BizzState initialStateForTests={{ inTestingEnviroment: true }}>
     <BQuizzWrapper />
   </BizzState>
 )
 
 describe("Checked functionality", () => {
-  test("renders without errors", () => {
+  test("renders without errors", async () => {
     const { getByTestId } = render(<BQuizzContainer />)
+    await wait(200)
     const BQuizz = getByTestId("bquizz-component")
     expect(BQuizz).toBeInTheDocument()
   })
-  test("only one option is selected after clicking in more that one option", () => {
+  test("only one option is selected after clicking in more that one option", async () => {
     const { getByTestId } = render(<BQuizzContainer />)
 
     const { firstQuestion } = ids
+    await wait(200)
 
     const firstOptionFromFirstQuestion = getByTestId(
       `option-item-${firstQuestion.id}-${firstQuestion.options.firstId}`

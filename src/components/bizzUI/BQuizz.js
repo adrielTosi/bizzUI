@@ -7,9 +7,6 @@ import { GET_ANSWERS } from "components/querys"
 
 const SharedComponent = ({ stateQuestionItems, pathname }) => (
   <div data-testid="bquizz-component">
-    <div className="titleContainer">
-      <h3>Quizz</h3>
-    </div>
     {questionsMapper(stateQuestionItems, pathname)}
   </div>
 )
