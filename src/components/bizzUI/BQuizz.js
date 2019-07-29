@@ -4,6 +4,7 @@ import { Query } from "react-apollo"
 import bizzContext from "contexts/bizzContext"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
+import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
 
 /**
  * The job of this component is simply to `Query` the database or cache
@@ -44,9 +45,10 @@ const BQuizz = ({ location }) => {
       </Query>
     )
   } else {
-    const { stateQuestionItems, pathname } = context.bizzState
+    const { stateQuestionItems, pathname, hasVoted } = context.bizzState
     return (
       <div data-testid="bquizz-component">
+        {hasVoted && <ThanksMessage />}
         {questionsMapper(stateQuestionItems, pathname)}
       </div>
     )

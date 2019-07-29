@@ -75,7 +75,7 @@ const BOptionItem = ({
                 style={{
                   width: `${percentageAnswer}%`,
                 }}
-                aria-valuenow={`${percentageAnswer}`}
+                aria-valuenow={percentageAnswer}
                 aria-valuemin="0"
                 aria-valuemax="100"
               />
@@ -94,7 +94,7 @@ BOptionItem.propTypes = {
   questionId: PropTypes.string.isRequired,
   optionId: PropTypes.string.isRequired,
   block: PropTypes.bool,
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
   seeAnswers: PropTypes.bool,
   totalVotes: PropTypes.number,
   optionVotes: PropTypes.number,

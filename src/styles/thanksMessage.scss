@@ -1,0 +1,44 @@
+@import "variables";
+.message-container {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 8px;
+  border: 1px solid $secundary;
+  padding: 8px;
+  align-items: center;
+  flex-wrap: nowrap !important;
+  margin-bottom: 1em !important;
+}
+
+.congrats {
+  justify-content: center;
+  img {
+    margin-right: 1em;
+    margin-left: 1em;
+  }
+}
+
+.action {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  color: $secundary;
+  font-weight: 600;
+  .your-vote {
+    color: $fade-text;
+    font-weight: normal;
+    font-size: 0.8em;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+.call {
+  float: right;
+  button {
+    background-color: $secundary;
+    border: none;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

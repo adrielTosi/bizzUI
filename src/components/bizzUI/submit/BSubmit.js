@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { Mutation } from "react-apollo"
 
-import BSubmitButton from "components/bizzUI/submit/BSubmitButton"
+import BButton from "components/bizzUI/BButton"
 import bizzContext from "contexts/bizzContext"
 import { UPDATE_VOTES_MUTATION, GET_ANSWERS } from "components/querys"
 import {
@@ -87,7 +87,7 @@ const BSubmit = () => {
             {localData && localData.hasVoted === true ? (
               <p>Thank you for participating.</p>
             ) : (
-              <BSubmitButton
+              <BButton
                 action={() => updateVotes(apolloUpdateVotes, client)}
                 loading={loading}
                 error={error}

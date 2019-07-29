@@ -42,10 +42,14 @@ const useStyle = createUseStyles({
   },
 })
 
-const BSubmitButton = props => {
+const BSubmitButton = ({ styles, ...props }) => {
   const style = useStyle(props)
   return (
-    <button className={style.buttonContainer} onClick={props.action}>
+    <button
+      className={style.buttonContainer}
+      style={{ ...styles }}
+      onClick={props.action}
+    >
       Submit
     </button>
   )
