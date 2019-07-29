@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React from "react"
 import "styles/check.scss"
 import bee from "images/bee.png"
 

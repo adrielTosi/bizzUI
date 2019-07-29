@@ -21,6 +21,7 @@
     "gatsby-transformer-sharp": "^2.2.3",
     "graphql-tag": "^2.10.1",
     "isomorphic-fetch": "^2.2.1",
+    "nanobar": "^0.4.2",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

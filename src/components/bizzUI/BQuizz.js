@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef } from "react"
 import { Query } from "react-apollo"
 
 import bizzContext from "contexts/bizzContext"
+import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
+import Loading from "components/Loading"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
 
@@ -35,7 +37,7 @@ const BQuizz = ({ location }) => {
     return (
       <Query query={GET_ANSWERS}>
         {({ error, loading, data }) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loading />
           if (error) return <p>{error.message}</p>
           if (data) contextSetup(data)
 
@@ -44,9 +46,10 @@ const BQuizz = ({ location }) => {
       </Query>
     )
   } else {
-    const { stateQuestionItems, pathname } = context.bizzState
+    const { stateQuestionItems, pathname, hasVoted } = context.bizzState
     return (
       <div data-testid="bquizz-component">
+        {hasVoted && <ThanksMessage />}
         {questionsMapper(stateQuestionItems, pathname)}
       </div>
     )
