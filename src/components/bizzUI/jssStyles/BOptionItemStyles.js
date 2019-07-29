@@ -22,9 +22,11 @@ export default {
   },
   image: ({ block }) => {
     const display = block ? "flex" : "block"
+    const webkitDisplay = block ? "-webkit-flex" : "block"
     return {
       width: "100%",
       maxWidth: "100%",
+      display: webkitDisplay,
       display: display,
       textAlign: "center",
     }
