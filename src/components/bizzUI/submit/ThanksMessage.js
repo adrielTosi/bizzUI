@@ -1,6 +1,6 @@
 import React from "react"
 import congrats from "images/confetti.svg"
-import "styles/ThanksMessage.scss"
+import "styles/thanksMessage.scss"
 import { Link } from "gatsby"
 
 const ThanksMessage = () => {
