@@ -51,7 +51,7 @@ const BOptionItem = ({
         )}
 
         <div className={style.image}>
-          <img src={url} alt="img" />
+          <img src={url} alt="img" style={{ maxWidth: "100%" }} />
         </div>
 
         {(title || subtitle) && !seeAnswers && (

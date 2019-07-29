@@ -26,8 +26,8 @@ export default {
     return {
       width: "100%",
       maxWidth: "100%",
-      display: webkitDisplay,
-      display: display,
+      display: "flex",
+      display: "-webkit-flex",
       textAlign: "center",
     }
   },
