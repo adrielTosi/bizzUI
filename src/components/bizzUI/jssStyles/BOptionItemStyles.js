@@ -8,6 +8,7 @@ export default {
       minHeight: 80,
       width: containerWidth,
       display: "flex",
+      display: "-webkit-flex",
       flexWrap: flexWrap,
       justifyContent: "center",
       alignItems: alignItems,
