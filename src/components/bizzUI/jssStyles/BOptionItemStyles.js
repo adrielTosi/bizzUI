@@ -8,7 +8,6 @@ export default {
       minHeight: 80,
       width: containerWidth,
       display: "flex",
-      display: "-webkit-flex",
       flexWrap: flexWrap,
       justifyContent: "center",
       alignItems: alignItems,
@@ -22,12 +21,10 @@ export default {
   },
   image: ({ block }) => {
     const display = block ? "flex" : "block"
-    const webkitDisplay = block ? "-webkit-flex" : "block"
     return {
       width: "100%",
       maxWidth: "100%",
-      display: "flex",
-      display: "-webkit-flex",
+      display: display,
       textAlign: "center",
     }
   },
