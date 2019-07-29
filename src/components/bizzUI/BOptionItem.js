@@ -33,12 +33,6 @@ const BOptionItem = ({
 
   const percentageAnswer = +((optionVotes / totalVotes) * 100).toFixed(0)
 
-  const barColor = () => {
-    if (percentageAnswer < 25) return "bg-darger"
-    if (percentageAnswer >= 25 && percentageAnswer <= 60) return "bg-warning"
-    return "bg-success"
-  }
-
   return (
     <div
       data-testid={`option-item-${questionId}-${optionId}`}
