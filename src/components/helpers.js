@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React from "react"
 import Fade from "react-reveal/Fade"
 import BCard from "components/bizzUI/BCard"
 import BCardTitle from "components/bizzUI/BCardTitle"
@@ -6,7 +6,6 @@ import BOptions from "components/bizzUI/BOptions"
 import BOptionItem from "components/bizzUI/BOptionItem"
 import BQuizz from "components/bizzUI/BQuizz"
 import BAnswers from "components/bizzUI/answers/BAnswers"
-import Loading from "components/Loading"
 
 /**
  * `RENDER CARD CHILDREN` divides children between two:
@@ -51,21 +50,19 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
             <BCardTitle title={question.title} />
             <BOptions>
               {question.options.map(option => (
-                <Suspense fallback={<Loading />}>
-                  <BOptionItem
-                    key={option.id}
-                    questionId={question.id}
-                    optionId={option.id}
-                    url={option.img.url}
-                    title={option.title}
-                    subtitle={option.subtitle}
-                    block={option.blockWidth}
-                    checked={option.checked}
-                    totalVotes={question.totalVotes}
-                    optionVotes={option.votes}
-                    seeAnswers={seeAnswers}
-                  />
-                </Suspense>
+                <BOptionItem
+                  key={option.id}
+                  questionId={question.id}
+                  optionId={option.id}
+                  url={option.img.url}
+                  title={option.title}
+                  subtitle={option.subtitle}
+                  block={option.blockWidth}
+                  checked={option.checked}
+                  totalVotes={question.totalVotes}
+                  optionVotes={option.votes}
+                  seeAnswers={seeAnswers}
+                />
               ))}
             </BOptions>
           </BCard>

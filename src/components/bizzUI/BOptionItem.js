@@ -31,7 +31,7 @@ const BOptionItem = ({
     checkSelectedOption(bizzState.stateQuestionItems, questionId, optionId)
   }
 
-  const percentageAnswer = +((optionVotes / totalVotes) * 100).toFixed(2)
+  const percentageAnswer = +((optionVotes / totalVotes) * 100).toFixed(0)
 
   const barColor = () => {
     if (percentageAnswer < 25) return "bg-darger"
@@ -66,9 +66,18 @@ const BOptionItem = ({
             {subtitle && <span className={style.subtitle}>{subtitle}</span>}
           </div>
         )}
-
         {seeAnswers && (
-          <ProgressBar percentage={percentageAnswer} barColor={barColor()} />
+          <div
+            style={{
+              color: "#bdbdbd",
+              fontFamily: "Montserrat",
+              fontSize: "0.8em",
+              marginTop: "0.7em",
+            }}
+          >
+            {`${percentageAnswer}%`}
+            <ProgressBar progress={percentageAnswer} />
+          </div>
         )}
       </div>
     </div>
