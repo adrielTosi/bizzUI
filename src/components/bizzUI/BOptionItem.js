@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 
 import bizzContext from "contexts/bizzContext"
 import CheckedSign from "components/CheckedSign"
+import ProgressBar from "components/bizzUI/answers/ProgressBar"
 import { BOptionItemStyles } from "./jssStyles"
 
 /**
@@ -67,20 +68,7 @@ const BOptionItem = ({
         )}
 
         {seeAnswers && (
-          <div className="mt-3 mb-1" style={{ textAlign: "center" }}>
-            <span>{`${percentageAnswer} %`}</span>
-            <div className="progress w-100" style={{ height: "8px" }}>
-              <div
-                className={`progress-bar ${barColor()}`}
-                style={{
-                  width: `${percentageAnswer}%`,
-                }}
-                aria-valuenow={percentageAnswer}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              />
-            </div>
-          </div>
+          <ProgressBar percentage={percentageAnswer} barColor={barColor()} />
         )}
       </div>
     </div>

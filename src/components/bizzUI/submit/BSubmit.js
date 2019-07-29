@@ -14,7 +14,7 @@ import {
 const BSubmit = () => {
   const context = useContext(bizzContext)
 
-  const { stateQuestionItems } = context.bizzState
+  const { stateQuestionItems, hasVoted } = context.bizzState
   const [hasError, setError] = useState(false)
 
   const afterVoting = () => {
@@ -23,8 +23,6 @@ const BSubmit = () => {
   }
 
   const updateVotes = (mutation, client) => {
-    console.log(`---------> ${process.env.AUTH_TOKEN}`)
-
     if (allQuestionsHaveAnswer(stateQuestionItems)) {
       setError(false)
 
@@ -74,26 +72,21 @@ const BSubmit = () => {
     <Mutation mutation={UPDATE_VOTES_MUTATION}>
       {(apolloUpdateVotes, { loading, error, data, client }) => {
         const localData = tryQuery(client)
-        console.log(localData)
         return (
-          <div>
-            {loading && <p>Loading...</p>}
-            {data && <p>THANK YOU</p>}
+          <div style={{ float: "right" }}>
             {hasError && (
-              <span className="small">
-                Please answer all questions before submiting
-              </span>
+              <div className="small text-danger">
+                Please answer all questions.
+              </div>
             )}
-            {localData && localData.hasVoted === true ? (
-              <p>Thank you for participating.</p>
-            ) : (
+            {localData ? (
               <BButton
                 action={() => updateVotes(apolloUpdateVotes, client)}
                 loading={loading}
                 error={error}
-                data={data}
+                disable={hasVoted}
               />
-            )}
+            ) : null}
 
             {error && <p>{error.message}</p>}
           </div>

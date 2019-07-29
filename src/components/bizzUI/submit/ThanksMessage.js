@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 
 const ThanksMessage = () => {
   return (
-    <div className="message-container row m-auto">
+    <div className="message-container row">
       <div className="congrats">
         <img src={congrats} height="25px" alt="congrats" />
       </div>

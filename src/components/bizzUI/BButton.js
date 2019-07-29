@@ -22,6 +22,10 @@ const useStyle = createUseStyles({
       "&:hover": {
         backgroundColor: "#6bb952",
       },
+      "&:disabled": {
+        backgroundColor: "#d6e7d0",
+        cursor: "auto",
+      },
     }
     const secondaryButton = {
       ...basicButton,
@@ -33,12 +37,19 @@ const useStyle = createUseStyles({
         border: "none",
         color: "white",
       },
+      "&:disabled": {
+        backgroundColor: "#f3eccf",
+        cursor: "auto",
+      },
     }
     const buttonMapper = {
       primary: primaryButton,
       secondary: secondaryButton,
     }
     return buttonMapper[props.type]
+  },
+  "& :disabled": {
+    cursor: "auto",
   },
 })
 
@@ -49,8 +60,9 @@ const BSubmitButton = ({ styles, ...props }) => {
       className={style.buttonContainer}
       style={{ ...styles }}
       onClick={props.action}
+      disabled={props.disable}
     >
-      Submit
+      {props.loading ? "..." : "Submit"}
     </button>
   )
 }

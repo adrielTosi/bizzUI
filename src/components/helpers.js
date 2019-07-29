@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense } from "react"
 import Fade from "react-reveal/Fade"
 import BCard from "components/bizzUI/BCard"
 import BCardTitle from "components/bizzUI/BCardTitle"
@@ -6,6 +6,7 @@ import BOptions from "components/bizzUI/BOptions"
 import BOptionItem from "components/bizzUI/BOptionItem"
 import BQuizz from "components/bizzUI/BQuizz"
 import BAnswers from "components/bizzUI/answers/BAnswers"
+import Loading from "components/Loading"
 
 /**
  * `RENDER CARD CHILDREN` divides children between two:
@@ -43,26 +44,28 @@ export const questionsMapper = (stateQuestionItems, pathname) => {
   }
   const seeAnswers = pathname && seeAnswersMapper[pathname]
   return (
-    <div data-testid="questions-mapper" style={{marginTop:"1em"}}>
+    <div data-testid="questions-mapper" style={{ marginTop: "1em" }}>
       {stateQuestionItems.map(question => (
         <Fade Bottom wait={300} key={question.id}>
           <BCard key={question.id}>
             <BCardTitle title={question.title} />
             <BOptions>
               {question.options.map(option => (
-                <BOptionItem
-                  key={option.id}
-                  questionId={question.id}
-                  optionId={option.id}
-                  url={option.img.url}
-                  title={option.title}
-                  subtitle={option.subtitle}
-                  block={option.blockWidth}
-                  checked={option.checked}
-                  totalVotes={question.totalVotes}
-                  optionVotes={option.votes}
-                  seeAnswers={seeAnswers}
-                />
+                <Suspense fallback={<Loading />}>
+                  <BOptionItem
+                    key={option.id}
+                    questionId={question.id}
+                    optionId={option.id}
+                    url={option.img.url}
+                    title={option.title}
+                    subtitle={option.subtitle}
+                    block={option.blockWidth}
+                    checked={option.checked}
+                    totalVotes={question.totalVotes}
+                    optionVotes={option.votes}
+                    seeAnswers={seeAnswers}
+                  />
+                </Suspense>
               ))}
             </BOptions>
           </BCard>

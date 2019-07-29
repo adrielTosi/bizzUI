@@ -18,7 +18,7 @@ const BQuizzContainer = ({ location }) => {
         <div className="col-sm-12 col-md-8 order-lg-12">
           <Titles currentPath={currentPath} />
           {ChosenComponent()}
-          <div className="float-right">
+          <div style={{ width: "100%", maxWidth: "450px" }}>
             {currentPath === "bizzUI" && <BSubmit />}
           </div>
         </div>

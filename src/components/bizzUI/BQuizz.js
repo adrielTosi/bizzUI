@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useRef } from "react"
 import { Query } from "react-apollo"
 
 import bizzContext from "contexts/bizzContext"
+import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
+import Loading from "components/Loading"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
-import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
 
 /**
  * The job of this component is simply to `Query` the database or cache
@@ -36,7 +37,7 @@ const BQuizz = ({ location }) => {
     return (
       <Query query={GET_ANSWERS}>
         {({ error, loading, data }) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loading />
           if (error) return <p>{error.message}</p>
           if (data) contextSetup(data)
 
