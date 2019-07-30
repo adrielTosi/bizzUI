@@ -8,7 +8,7 @@ const BQuestionsLayout = ({ children }) => {
   return (
     <div>
       <Header />
-      <main className="mt-4">
+      <main className="mt-4" style={{ minHeight: "100vh" }}>
         <div className="container">{children}</div>
       </main>
       <Footer />
