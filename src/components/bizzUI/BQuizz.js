@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { Query } from "react-apollo"
 
-import bizzContext from "contexts/bizzContext"
+import bizzContext from "contexts/BizzUI/bizzContext"
 import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
-import Loading from "components/Loading"
+import Loading from "components/common/Loading"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
 

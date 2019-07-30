@@ -1,6 +1,6 @@
 import React from "react"
 import "styles/check.scss"
-import bee from "images/bee.png"
+import bee from "images/BizzUI/bee.png"
 
 const CheckedSign = ({ checked }) => {
   return (

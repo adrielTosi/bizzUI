@@ -1,5 +1,5 @@
 import React from "react"
-import congrats from "images/confetti.svg"
+import congrats from "images/BizzUI/confetti.svg"
 import "styles/thanksMessage.scss"
 import { Link } from "gatsby"
 

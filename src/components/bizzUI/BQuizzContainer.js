@@ -1,9 +1,9 @@
 import React from "react"
 
-import BizzState from "contexts/bizzState"
+import BizzState from "contexts/BizzUI/bizzState"
 import BSubmit from "components/bizzUI/submit/BSubmit"
-import Titles from "components/Titles"
-import Sidenav from "components/Sidenav"
+import Titles from "components/common/Titles"
+import Sidenav from "components/common/Sidenav"
 import { BQuizzOrBAnswers } from "components/helpers"
 
 /**

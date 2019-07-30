@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { createUseStyles } from "react-jss"
 import PropTypes from "prop-types"
 
-import bizzContext from "contexts/bizzContext"
-import CheckedSign from "components/CheckedSign"
+import bizzContext from "contexts/BizzUI/bizzContext"
+import CheckedSign from "components/common/CheckedSign"
 import ProgressBar from "components/bizzUI/answers/ProgressBar"
 import { BOptionItemStyles } from "./jssStyles"
 

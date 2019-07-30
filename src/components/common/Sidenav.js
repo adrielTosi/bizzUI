@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 
 import "styles/sidenav.scss"
-import study from "images/study.svg"
-import github from "images/github-icon.svg"
+import study from "images/BizzUI/study.svg"
+import github from "images/BizzUI/github-icon.svg"
 
 const Item = ({ children, icon }) => {
   return (

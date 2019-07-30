@@ -1,6 +1,6 @@
 import React from "react"
 
-import Layout from "layouts/BQuestionLayout"
+import Layout from "layouts/BizzUILayout"
 import "styles/title.scss"
 import "styles/about.scss"
 

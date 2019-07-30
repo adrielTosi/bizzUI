@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import logo from "images/logo-color-with-name.svg"
+import logo from "images/BizzUI/logo-color-with-name.svg"
 
 const Header = () => {
   return (

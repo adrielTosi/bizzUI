@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import logo from "images/logo-white-with-name.svg"
-import bee from "images/bee.png"
+import logo from "images/BizzUI/logo-white-with-name.svg"
+import bee from "images/BizzUI/bee.png"
 
 const Footer = () => {
   return (

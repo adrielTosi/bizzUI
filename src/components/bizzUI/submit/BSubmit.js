@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { Mutation } from "react-apollo"
 
 import BButton from "components/bizzUI/BButton"
-import bizzContext from "contexts/bizzContext"
+import bizzContext from "contexts/BizzUI/bizzContext"
 import { UPDATE_VOTES_MUTATION, GET_ANSWERS } from "components/querys"
 import {
   defineMutationVariables,

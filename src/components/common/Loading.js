@@ -1,5 +1,5 @@
 import React from "react"
-import loading from "images/loading.gif"
+import loading from "images/BizzUI/loading.gif"
 const Loading = () => {
   return (
     <div style={{ width: "100%", maxWidth: "450px", textAlign: "center" }}>
