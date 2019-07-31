@@ -1,3 +1,8 @@
 import Switcher from "./Switcher"
+import PState from "contexts/Portfolio/pState"
 
-export default Switcher
+export default (
+  <PState>
+    <Switcher />
+  </PState>
+)
