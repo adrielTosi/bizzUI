@@ -1,7 +1,7 @@
 import React from "react"
 
 import SEO from "../components/common/seo"
-import Layout from "layouts/Portifolio"
+import Layout from "layouts/Portfolio"
 import Switcher from "components/portfolio/Switcher"
 import "bootstrap/dist/css/bootstrap.css"
 

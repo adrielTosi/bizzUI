@@ -1,0 +1,28 @@
+.item {
+  cursor: pointer;
+  &:hover {
+    span {
+      border-bottom: 2px solid black;
+    }
+  }
+}
+
+.selected {
+  span {
+    border-bottom: 2px solid black;
+  }
+}
+
+.highlighted {
+  background-color: black;
+  color: white;
+  &:hover {
+    background-color: transparent;
+    border-bottom: 2px solid black;
+    color: black;
+    font-weight: 400;
+    span {
+      border: none;
+    }
+  }
+}

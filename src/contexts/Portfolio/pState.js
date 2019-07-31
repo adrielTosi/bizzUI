@@ -1,29 +1,35 @@
 import React, { useReducer } from "react"
 
-import pContext from "./pContext"
+import PContext from "./pContext"
 import pReducer from "./pReducer"
+import { SET_TABS_IDS, SET_TAB } from "./pTypes"
 
 const initialState = {
-  current: {
-    stack: true,
-    projects: false,
-    about: false,
-    hire: false,
-  },
+  currentTab: "",
 }
 
-const pState = ({ children }) => {
+const PState = ({ children }) => {
   const [pState, dispatch] = useReducer(pReducer, initialState)
 
+  const setTabsIds = arrayOfIds => {
+    console.log(arrayOfIds)
+    dispatch({ type: SET_TABS_IDS, payload: arrayOfIds })
+  }
+
+  const setTab = id => {
+    dispatch({ type: SET_TAB, payload: id })
+  }
   return (
-    <pContext.Provider
+    <PContext.Provider
       value={{
         pState,
+        setTabsIds,
+        setTab,
       }}
     >
       {children}
-    </pContext.Provider>
+    </PContext.Provider>
   )
 }
 
-export default pState
+export default PState
