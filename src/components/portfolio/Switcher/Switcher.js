@@ -2,51 +2,45 @@ import React, { useContext, useEffect } from "react"
 
 import SwitcherContainer from "./SwitcherContainer"
 import pContext from "contexts/Portfolio/pContext"
-import style from "./switcher.module.scss"
+import Tab from "./Tab"
 
-const Tab = ({ id, label, currentTab, highlight, action }) => {
-  const selected = currentTab === id ? style.selected : ""
-  const highlighted = highlight ? style.highlighted : ""
-  return (
-    <div
-      className={`col-auto  ${style.item} ${selected} ${highlighted}`}
-      onClick={() => action(id)}
-    >
-      <span>{label}</span>
-    </div>
-  )
-}
-
+const tabs = [
+  {
+    id: "stack",
+    label: "Stack",
+    highlight: false,
+  },
+  {
+    id: "projects",
+    label: "Projects",
+    highlight: false,
+  },
+  {
+    id: "about",
+    label: "About me",
+    highlight: false,
+  },
+  {
+    id: "hire",
+    label: "Hire!",
+    highlight: true,
+  },
+]
 const Switcher = () => {
   const context = useContext(pContext)
 
   return (
     <SwitcherContainer>
-      <Tab
-        id="stack"
-        label="Stack"
-        currentTab={context.pState.currentTab}
-        action={context.setTab}
-      />
-      <Tab
-        id="projects"
-        label="Projects"
-        currentTab={context.pState.currentTab}
-        action={context.setTab}
-      />
-      <Tab
-        id="about"
-        label="About Me"
-        currentTab={context.pState.currentTab}
-        action={context.setTab}
-      />
-      <Tab
-        id="hire"
-        label="Hire!"
-        currentTab={context.pState.currentTab}
-        highlight
-        action={context.setTab}
-      />
+      {tabs.map(tab => (
+        <Tab
+          key={tab.id}
+          id={tab.id}
+          label={tab.label}
+          highlight={tab.highlight}
+          currentTab={context.pState.currentTab}
+          action={context.setTab}
+        />
+      ))}
     </SwitcherContainer>
   )
 }

@@ -26,3 +26,14 @@
     }
   }
 }
+
+.highlightSelected {
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+  &:hover {
+    background-color: black;
+    color: white;
+    border: none;
+  }
+}
