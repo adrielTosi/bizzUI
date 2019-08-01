@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 
 import SwitcherContainer from "./SwitcherContainer"
+import Display from "components/portfolio/Display"
 import pContext from "contexts/Portfolio/pContext"
 import Tab from "./Tab"
 
@@ -8,22 +9,14 @@ const tabs = [
   {
     id: "stack",
     label: "Stack",
-    highlight: false,
   },
   {
     id: "projects",
     label: "Projects",
-    highlight: false,
   },
   {
     id: "about",
     label: "About me",
-    highlight: false,
-  },
-  {
-    id: "hire",
-    label: "Hire!",
-    highlight: true,
   },
 ]
 const Switcher = () => {
@@ -41,6 +34,11 @@ const Switcher = () => {
           action={context.setTab}
         />
       ))}
+      <div className="col-12">
+        {context.pState.currentTab && (
+          <Display tabs={tabs} currentTab={context.pState.currentTab} />
+        )}
+      </div>
     </SwitcherContainer>
   )
 }

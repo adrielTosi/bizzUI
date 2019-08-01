@@ -1,3 +1,8 @@
+/**
+ * Component to set tab id to context and first tab to be selected
+ * This functionality could be done in Switcher component but I decided to
+ * make a new one
+ */
 import React, { useContext, useEffect } from "react"
 import pContext from "contexts/Portfolio/pContext"
 

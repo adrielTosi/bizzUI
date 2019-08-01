@@ -1,5 +1,6 @@
 import React from "react"
 import style from "./switcher.module.scss"
+import PropTypes from "prop-types"
 
 const Tab = ({ id, label, currentTab, highlight, action }) => {
   const selected = currentTab === id && !highlight ? style.selected : ""
@@ -12,9 +13,20 @@ const Tab = ({ id, label, currentTab, highlight, action }) => {
       className={`col-auto  ${style.item} ${highlighted} ${selected} ${selectedHighlight}`}
       onClick={() => action(id)}
     >
-      <span>{label}</span>
+      <span className="m-1">{label}</span>
     </div>
   )
 }
 
+Tab.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  currentTab: PropTypes.string.isRequired,
+  highlight: PropTypes.bool,
+  action: PropTypes.func.isRequired,
+}
+
+Tab.defaultProps = {
+  highlight: false
+}
 export default Tab

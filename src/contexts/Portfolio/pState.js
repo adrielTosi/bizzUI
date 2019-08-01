@@ -4,9 +4,7 @@ import PContext from "./pContext"
 import pReducer from "./pReducer"
 import { SET_TABS_IDS, SET_TAB } from "./pTypes"
 
-const initialState = {
-  currentTab: "",
-}
+const initialState = {}
 
 const PState = ({ children }) => {
   const [pState, dispatch] = useReducer(pReducer, initialState)
