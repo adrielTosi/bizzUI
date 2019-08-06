@@ -4,6 +4,7 @@ import Display from "./Display"
 import DisplayOption from "./DisplayOption"
 import Stack from "./Options/Stack"
 import Projects from "./Options/Projects"
+import About from "./Options/About"
 
 const index = ({ tabs, currentTab }) => (
   <div className="mt-3">
@@ -14,7 +15,9 @@ const index = ({ tabs, currentTab }) => (
       <DisplayOption>
         <Projects />
       </DisplayOption>
-      <DisplayOption>Alo Doidera</DisplayOption>
+      <DisplayOption>
+        <About />
+      </DisplayOption>
     </Display>
   </div>
 )
