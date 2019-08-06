@@ -5,7 +5,7 @@ import logo from "images/Portfolio/logo-portfolio.svg"
 const Header = () => {
   return (
     <div className="row justify-content-center mb-2">
-      <div className="col-12 col-md-8">
+      <div className="col-11 col-md-8">
         <div className="row" style={{ borderBottom: "1px solid black" }}>
           <div className="col-12 text-center">
             <img src={logo} alt="logo" height="240px" />

@@ -1,0 +1,25 @@
+.unList {
+  list-style-type: none;
+}
+
+.skill {
+  padding: 8px 0 0 16px;
+  color: #6b6b6b;
+}
+
+.cardHeader {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.cardPrimary {
+  border: 1px solid #28a745;
+  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.cardBody {
+  a {
+    color: black;
+  }
+}
