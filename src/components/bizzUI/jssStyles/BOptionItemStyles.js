@@ -5,7 +5,6 @@ export default {
     const alignItems = block ? "center" : "initial"
     const selectedBackground = checked ? "#e8f7e5" : ""
     return {
-      minHeight: 80,
       width: containerWidth,
       display: "flex",
       flexWrap: flexWrap,

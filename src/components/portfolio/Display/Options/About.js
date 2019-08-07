@@ -6,7 +6,10 @@ const About = () => {
       <div className="col-12 col-lg-4 text-center">
         <img src={me} height="200px" style={{ borderRadius: "100%" }} />
       </div>
-      <div className="col-12 col-lg-8 lead">
+      <div
+        className="col-12 col-lg-8"
+        style={{ borderLeft: "2px solid black" }}
+      >
         Hello! My name is Adriel, nice to meet you. I am a front-end developer
         based in Germany. I was born in Brazil but I'm also partly Italian (such
         confusion). I use React as my primary tool to magically manipulate the
