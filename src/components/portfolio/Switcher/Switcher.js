@@ -35,9 +35,7 @@ const Switcher = () => {
         />
       ))}
       <div className="col-12 col-md-10 mt-4 mb-5">
-        {context.pState.currentTab && (
-          <Display tabs={tabs} currentTab={context.pState.currentTab} />
-        )}
+        <Display tabs={tabs} currentTab={context.pState.currentTab} />
       </div>
     </SwitcherContainer>
   )

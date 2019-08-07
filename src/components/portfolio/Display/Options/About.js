@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="row justify-content-center align-items-center">
       <div className="col-12 col-lg-4 text-center">
-        <img src={me} height="200px" style={{ borderRadius: "100%" }} />
+        <img src={me} height="200px" style={{ borderRadius: "100%" }} alt="" />
       </div>
       <div
         className="col-12 col-lg-8"

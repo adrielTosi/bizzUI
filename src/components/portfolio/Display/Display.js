@@ -14,6 +14,7 @@ const Display = ({ tabs, currentTab, children }) => {
    * are to be child of a DisplayOption component
    */
   const childrenArray = React.Children.toArray(children)
+  // eslint-disable-next-line
   childrenArray.map(child => {
     if (child.type && child.type.name === "DisplayOption") {
       displayOptionsChildren.push(child)
@@ -33,7 +34,7 @@ const Display = ({ tabs, currentTab, children }) => {
   /**
    * If there is more tabs than display options, it will simply render nothing
    */
-  if (displayMapper[currentTab].render) {
+  if (displayMapper[currentTab] && displayMapper[currentTab].render) {
     return displayMapper[currentTab].render
   } else {
     return null
