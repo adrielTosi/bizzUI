@@ -1,12 +1,19 @@
 import React from "react"
 
 import Layout from "layouts/BizzUILayout"
+import SEO from "../components/common/seo"
+import icon from "../images/BizzUI/logo-color-no-name.png"
 import "styles/title.scss"
 import "styles/about.scss"
 
 const about = () => {
   return (
     <Layout>
+      <SEO
+        title="Bizz UI"
+        description={`A quizz to better understand how users feel about UI pieces.`}
+        icon={icon}
+      />
       <div className="title-container mb-3">
         <div className="title">About</div>
         <div className="subtitle">This page is under construction.</div>

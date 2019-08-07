@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: `Adriel Tosi`,
     description: `Front-end developer for your website!`,
-    bizzDescription: `A quizz to better understand how users feel about UI pieces.`,
     author: `Adriel Tosi`,
   },
   plugins: [
