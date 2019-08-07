@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Adriel Tosi`,
+    description: `Front-end developer for your website!`,
+    bizzDescription: `A quizz to better understand how users feel about UI pieces.`,
+    author: `Adriel Tosi`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,14 +29,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-    resolve: "gatsby-source-graphql",
-    options: {
-      typeName: "BIZZ",
-      fieldName: "Bizz",
-      url: "https://api-euwest.graphcms.com/v1/cjy49fo1n1m2801clm6kln3l9/master",
-    },
-},
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
