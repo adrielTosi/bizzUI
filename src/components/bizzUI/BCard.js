@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { createUseStyles } from "react-jss"
 
-import BizzContext from "contexts/bizzContext"
+import BizzContext from "contexts/BizzUI/bizzContext"
 import { BCardStyles } from "./jssStyles"
 import { renderCardChildren } from "components/helpers"
 

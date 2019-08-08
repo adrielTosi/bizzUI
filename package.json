@@ -9,6 +9,7 @@
     "apollo-client": "^2.6.3",
     "bootstrap": "^4.3.1",
     "gatsby": "^2.13.21",
+    "gatsby-cli": "^2.7.20",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-manifest": "^2.2.3",
     "gatsby-plugin-offline": "^2.2.4",
@@ -20,6 +21,7 @@
     "gatsby-transformer-sharp": "^2.2.3",
     "graphql-tag": "^2.10.1",
     "isomorphic-fetch": "^2.2.1",
+    "nanobar": "^0.4.2",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -27,7 +29,8 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-jss": "10.0.0-alpha.22",
-    "react-reveal": "^1.2.2"
+    "react-reveal": "^1.2.2",
+    "waait": "^1.0.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",

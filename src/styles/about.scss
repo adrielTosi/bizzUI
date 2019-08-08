@@ -1,0 +1,11 @@
+@import "variables";
+
+.stack {
+  color: darken($fade-text, 12%);
+  .stack-title {
+    font-family: "Montserrat", sans-serif;
+  }
+  ul {
+    list-style-type: none;
+  }
+}

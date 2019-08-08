@@ -1,0 +1,38 @@
+@import "variables";
+
+.sidenav-container {
+  border-radius: 8px;
+  background-color: $primary-low-saturation;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  position: sticky;
+}
+
+.sidenav-item {
+  display: flex;
+  color: $fade-text;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.item-icon {
+  margin: 0 0.7em;
+  width: 20px;
+}
+
+.item-message {
+  font-size: 0.9em;
+  a {
+    text-decoration: none;
+    color: $secundary;
+    & :hover {
+      color: darken($secundary, 15%);
+    }
+  }
+}
+.separator {
+  width: 100%;
+  margin: 0.5em auto;
+}

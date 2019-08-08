@@ -1,18 +1,11 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { Query } from "react-apollo"
 
-import bizzContext from "contexts/bizzContext"
+import bizzContext from "contexts/BizzUI/bizzContext"
+import ThanksMessage from "components/bizzUI/submit/ThanksMessage"
+import Loading from "components/common/Loading"
 import { questionsMapper } from "components/helpers"
 import { GET_ANSWERS } from "components/querys"
-
-const SharedComponent = ({ stateQuestionItems, pathname }) => (
-  <div data-testid="bquizz-component">
-    <div className="titleContainer">
-      <h3>Quizz</h3>
-    </div>
-    {questionsMapper(stateQuestionItems, pathname)}
-  </div>
-)
 
 /**
  * The job of this component is simply to `Query` the database or cache
@@ -44,29 +37,21 @@ const BQuizz = ({ location }) => {
     return (
       <Query query={GET_ANSWERS}>
         {({ error, loading, data }) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loading />
           if (error) return <p>{error.message}</p>
           if (data) contextSetup(data)
 
-          const { stateQuestionItems, pathname } = context.bizzState
-
-          return (
-            <SharedComponent
-              stateQuestionItems={stateQuestionItems}
-              pathname={pathname}
-              context={context}
-            />
-          )
+          return null
         }}
       </Query>
     )
   } else {
-    const { stateQuestionItems, pathname } = context.bizzState
+    const { stateQuestionItems, pathname, hasVoted } = context.bizzState
     return (
-      <SharedComponent
-        stateQuestionItems={stateQuestionItems}
-        pathname={pathname}
-      />
+      <div data-testid="bquizz-component">
+        {hasVoted && <ThanksMessage />}
+        {questionsMapper(stateQuestionItems, pathname)}
+      </div>
     )
   }
 }

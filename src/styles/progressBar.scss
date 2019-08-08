@@ -1,0 +1,71 @@
+$color1: #e98971;
+$color2: #ffe366;
+$color3: #e7f152;
+$color4: #71dbe9;
+$color5: #71e9b1;
+$color6: #57ce96;
+$color7: #67fcb6;
+$color8: #8de971;
+
+.progress-bar {
+  .nanobar {
+    height: 8px;
+    background-color: #e8f7e5;
+  }
+}
+.color1 {
+  .nanobar {
+    .bar {
+      background-color: $color1;
+    }
+  }
+}
+.color2 {
+  .nanobar {
+    .bar {
+      background-color: $color2;
+    }
+  }
+}
+.color3 {
+  .nanobar {
+    .bar {
+      background-color: $color3;
+    }
+  }
+}
+.color4 {
+  .nanobar {
+    .bar {
+      background-color: $color4;
+    }
+  }
+}
+.color5 {
+  .nanobar {
+    .bar {
+      background-color: $color5;
+    }
+  }
+}
+.color6 {
+  .nanobar {
+    .bar {
+      background-color: $color6;
+    }
+  }
+}
+.color7 {
+  .nanobar {
+    .bar {
+      background-color: $color7;
+    }
+  }
+}
+.color8 {
+  .nanobar {
+    .bar {
+      background-color: $color8;
+    }
+  }
+}

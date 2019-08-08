@@ -5,7 +5,6 @@ export default {
     const alignItems = block ? "center" : "initial"
     const selectedBackground = checked ? "#e8f7e5" : ""
     return {
-      minHeight: 80,
       width: containerWidth,
       display: "flex",
       flexWrap: flexWrap,
@@ -16,12 +15,14 @@ export default {
       backgroundColor: selectedBackground,
       borderRadius: 8,
       position: "relative",
+      maxWidht: "100%",
     }
   },
   image: ({ block }) => {
     const display = block ? "flex" : "block"
     return {
       width: "100%",
+      maxWidth: "100%",
       display: display,
       textAlign: "center",
     }
@@ -46,5 +47,8 @@ export default {
     position: "absolute",
     right: -10,
     top: -10,
+  },
+  insideContainer: {
+    maxWidth: "100%",
   },
 }

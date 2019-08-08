@@ -1,7 +1,9 @@
 import React from "react"
 
-import BizzState from "contexts/bizzState"
+import BizzState from "contexts/BizzUI/bizzState"
 import BSubmit from "components/bizzUI/submit/BSubmit"
+import Titles from "components/common/Titles"
+import Sidenav from "components/common/Sidenav"
 import { BQuizzOrBAnswers } from "components/helpers"
 
 /**
@@ -11,13 +13,18 @@ import { BQuizzOrBAnswers } from "components/helpers"
  */
 const BQuizzContainer = ({ location }) => {
   const { ChosenComponent, currentPath } = BQuizzOrBAnswers(location)
-  console.log(currentPath)
   return (
     <BizzState>
       <div className="row">
-        <div className="col-sm-12 col-md-8 order-lg-12">
+        {currentPath === "bizzUI" && (
+          <div className="col-12 col-md-4 order-md-12">
+            <Sidenav />
+          </div>
+        )}
+        <div className="col-12 col-md-8">
+          <Titles currentPath={currentPath} />
           {ChosenComponent()}
-          <div className="float-right">
+          <div style={{ width: "100%", maxWidth: "450px" }}>
             {currentPath === "bizzUI" && <BSubmit />}
           </div>
         </div>
