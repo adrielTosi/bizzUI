@@ -18,6 +18,7 @@ const Tab = ({ id, label, currentTab, highlight, action }) => {
   )
 }
 
+Tab.refName = "Tab"
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -27,6 +28,6 @@ Tab.propTypes = {
 }
 
 Tab.defaultProps = {
-  highlight: false
+  highlight: false,
 }
 export default Tab

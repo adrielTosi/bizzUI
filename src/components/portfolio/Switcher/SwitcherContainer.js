@@ -12,7 +12,7 @@ const SwitcherContainer = ({ children }) => {
   useEffect(() => {
     const childrenArray = React.Children.toArray(children)
     const tabsIds = childrenArray.map(child => {
-      if (child.type && child.type.name === "Tab") {
+      if (child.type && child.type.refName === "Tab") {
         return child.props.id
       }
       return null
