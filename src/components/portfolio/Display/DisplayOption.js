@@ -4,4 +4,5 @@ const DisplayOption = ({ children }) => {
   return <>{children}</>
 }
 
+DisplayOption.refName = "DisplayOption"
 export default DisplayOption
