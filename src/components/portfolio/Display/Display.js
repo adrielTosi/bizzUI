@@ -30,11 +30,13 @@ const Display = ({ tabs, currentTab, children }) => {
       render: displayOptionsChildren[index],
     }
   })
-
+  console.log(displayMapper)
   /**
    * If there is more tabs than display options, it will simply render nothing
    */
   if (displayMapper[currentTab] && displayMapper[currentTab].render) {
+    console.log("Inside return option in Display")
+    console.log(displayMapper[currentTab])
     return <div>{displayMapper[currentTab].render}</div>
   } else {
     return null
