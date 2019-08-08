@@ -16,13 +16,17 @@ const Card = ({ img, title, text, githubLink, siteLink, isRoute, primary }) => {
           <p className="card-text text-muted small">{text}</p>
           <div className="row text-center">
             <div className="col-6">
-              <a href={githubLink}>Github</a>
+              <a href={githubLink} target="_blank" rel="noopener noreferrer">
+                Github
+              </a>
             </div>
             <div className="col-6">
               {isRoute ? (
                 <Link to={siteLink}>Visit website</Link>
               ) : (
-                <a href={siteLink}>Visit website</a>
+                <a target="_blank" rel="noopener noreferrer" href={siteLink}>
+                  Visit website
+                </a>
               )}
             </div>
           </div>
