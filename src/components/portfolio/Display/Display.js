@@ -35,7 +35,7 @@ const Display = ({ tabs, currentTab, children }) => {
    * If there is more tabs than display options, it will simply render nothing
    */
   if (displayMapper[currentTab] && displayMapper[currentTab].render) {
-    return displayMapper[currentTab].render
+    return <div>{displayMapper[currentTab].render}</div>
   } else {
     return null
   }
