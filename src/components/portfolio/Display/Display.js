@@ -14,6 +14,8 @@ const Display = ({ tabs, currentTab, children }) => {
    * are to be child of a DisplayOption component
    */
   const childrenArray = React.Children.toArray(children)
+  console.log("---->")
+  console.log(childrenArray)
   // eslint-disable-next-line
   childrenArray.forEach(child => {
     if (child.type && child.type.name === "DisplayOption") {
