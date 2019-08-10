@@ -16,3 +16,21 @@
   top: 25px;
   right: 0;
 }
+
+.bizzTab {
+  margin-top: 8px;
+  width: 40px;
+  font-size: 12px;
+  color: #8de971;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-right: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  img {
+    margin-bottom: 4px;
+    height: 25px;
+  }
+}
