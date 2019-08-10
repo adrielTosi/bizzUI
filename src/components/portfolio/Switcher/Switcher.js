@@ -34,7 +34,7 @@ const Switcher = () => {
           action={context.setTab}
         />
       ))}
-      <div className="col-12 col-md-10 mt-4 mb-5">
+      <div className="col-12 col-md-10 mt-4 mb-5 justify-content-center">
         <Display tabs={tabs} currentTab={context.pState.currentTab} />
       </div>
     </SwitcherContainer>
